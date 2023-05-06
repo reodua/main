@@ -1,0 +1,76 @@
+#
+# Region
+#
+- type: region
+  item: odeska
+  name: Нерухомість у Одеській області
+  address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
+  phone_main: 380974949649
+  phone_hot: 380974949649
+  phone_fax: 380974949649
+  email: info@realestate.od.ua
+  www: https://www.realestate.od.ua/
+
+#
+# District
+#
+- type: district
+  item: odeskyy
+  name: Нерухомість у Одеському районі
+
+#
+# District / Town
+#
+- type: town
+  item: reni
+  name: Нерухомість в місті Рені
+
+#
+# Region / City
+#
+- type: city
+  item: odesa
+  name: Нерухомість у місті Одеса
+
+#
+# Developers / Company
+#
+- type: developer
+  item: builder
+  name: Будівельна компанія "Будівельник"
+
+#
+# Realtor / Agent
+#
+- type: realtor
+  item: bandera
+  name: Нерухомість в Одесі - Степан Бандера
+  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
+  # phone_main: 380672349221
+  # phone_hot: 380672349221
+  # phone_fax: 380672349221
+  # email: info@realestate.od.ua
+  # www: https://www.realestate.if.ua/
+
+- type: realtor
+  item: agent
+  name: Нерухомість від Агента Продавця
+  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
+  # phone_main: 380504949649
+  # phone_hot: 380504949649
+  # phone_fax: 380504949649
+  # email: agent@realestate.in.ua
+  # www: https://www.realestate.in.ua/
+
+#
+# Agency / ahentsiya
+#
+- type: agency
+  item: ahentsiya
+  name: Нерухомість від Агенції Продавця
+  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
+  # phone_main: 380504949649
+  # phone_hot: 380504949649
+  # phone_fax: 380504949649
+  # email: agency@realestate.in.ua
+  # www: https://www.realestate.in.ua/
