@@ -96,12 +96,12 @@
   small: Миколаївська область
   url: http://www.realestate.mk.ua
 
-- title: Нерухомість в Одеській області
-  navtitle: місто Одеса
-  subtitle: Нерухомість в Одесі
-  small: Одеська область
-  url: https://www.realestate.od.ua
-  slug: odeska
+- title: Нерухомість в Харківській області
+  navtitle: місто Харків
+  subtitle: Нерухомість в Харкові
+  small: Харківська область
+  url: https://www.realestate.kh.ua
+  slug: kharkivska
 
 - title: Нерухомість в Київській області
   navtitle: місто Київ
