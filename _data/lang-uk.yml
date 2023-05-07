@@ -10,13 +10,36 @@ deck_region: Одеська
 kharkivska: Одещини
 
 #city
+balta: Балта
+bilhorod-dnistrovskyi: Білгород-Дністровський
+biliaivka: Біляївка
+izmail: Ізмаїл
 kharkiv: Одеса
+podilsk: Подільськ
+teplodar: Теплодар
+chornomorsk: Чорноморськ
+yuzhne: Южне
 
 #town
+ananiv: Ананьїв
+artsyz: Арциз
+berezivka: Березівка
+bolhrad: Болград
+vylkove: Вилкове
+kiliia: Кілія
+kodyma: Кодима
 reni: Рені
+rozdilna: Роздільна
+tatarbunary: Татарбунари
 
 #district
+berezivkyy: Березівський район
+bilhorod-dnistrovskyy: Білгород-Дністровський район
+bolhradkyy: Болградський район
+izmailkyy: Ізмаїльський район
 odeskyy: Одеський район
+podilskyy: Подільський район
+rozdilnyanskyy: Роздільнянський район
 
 home: Головна
 ua: Нерухомість в Україні
