@@ -3,9 +3,7 @@ layout: compress
 ---
 <!doctype html>
 <html dir="ltr" lang="uk-UA">
-  <head>
-    {%- include head.html -%}
-  </head>
+  <head>{%- include head.html -%}</head>
   <body style="background-color:#191021;color:#ffffff">
     <div class="main">
       <main class="content my-4">
@@ -30,6 +28,6 @@ layout: compress
       </main>
     </div>
   {%- include java-script.html -%}
-  <div class="sr-only d-none">{%- include map/o-0.html -%}</div>
+  {% comment %}<div class="sr-only d-none">{%- include map/o-0.html -%}</div>{% endcomment %}
   </body>
 </html>
