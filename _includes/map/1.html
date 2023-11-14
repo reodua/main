@@ -1,7 +1,7 @@
 {%- assign 2s = site.html_pages | sort:"path" | where_exp: "i", "i.url contains include.current or i.url != include.current" -%}
 
   {%- for 2 in 2s -%}
-    {%- if forloop.first -%}<ul class="list-unstyled">{%- endif -%}
+    {%- if forloop.first and 2.url != '' -%}<ul class="list-unstyled">{%- endif -%}
     {%- assign slug = 2.url | split: "/" | last -%}
     {%- assign current = 2.url | remove: slug | remove: "//" | append: "/" -%}
     {%- if include.current == current and 2.navhide != 1 and 2.title != '' -%}
@@ -14,5 +14,5 @@
       {%- include map/2.html current=2.url -%}
     </li>
     {%- endif -%}
-    {%- if forloop.last -%}</ul>{%- endif -%}
+    {%- if forloop.last and 2.url != '' -%}</ul>{%- endif -%}
   {%- endfor -%}
