@@ -1,4 +1,7 @@
 {%- assign 3s = site.html_pages | sort:"path" | where_exp: "i", "i.url contains include.current or i.url != include.current" -%}
+<pre>
+{{ 3s | jsonify | jsonify }}
+</pre>
 {%- if 3s.size > 0 -%}
 <ul class="list-unstyled border-left border-primary mt-1 ml-1 pl-2">
   {%- for 3 in 3s -%}
