@@ -24,7 +24,7 @@
   {
     "id": "1701018073",
     "type": "Квартира",
-    "rent": ""
+    "rent": "",
     "rooms": "2",
     "surface": "36.4",
     "surface_land": "",
@@ -46,7 +46,7 @@
   {
     "id": "1701016380",
     "type": "Квартира",
-    "rent": ""
+    "rent": "",
     "rooms": "1",
     "surface": "52.79",
     "surface_land": "",
@@ -68,7 +68,7 @@
   {
     "id": "1701016125",
     "type": "Квартира",
-    "rent": ""
+    "rent": "",
     "rooms": "2",
     "surface": "58",
     "surface_land": "",
@@ -90,7 +90,7 @@
   {
     "id": "1701015027",
     "type": "Квартира",
-    "rent": ""
+    "rent": "",
     "rooms": "2",
     "surface": "78.6",
     "surface_land": "",
@@ -112,7 +112,7 @@
   {
     "id": "1701014722",
     "type": "Квартира",
-    "rent": ""
+    "rent": "",
     "rooms": "2",
     "surface": "63",
     "surface_land": "",
