@@ -1,9 +1,11 @@
 ---
 layout: compress
 ---
+{%- assign url = page.url -%}
+{%- assign dir = page.dir -%}
 {%- capture fname -%}{%- include footer/contact.html legal="name" -%}{%- endcapture -%}
-{%- if page.url contains "city" or page.url contains "town" -%}{%- assign isCityTown = true -%}{%- else -%}{%- assign isCityTown = false -%}{%- endif -%}
-{%- if page.url contains "village" -%}{%- assign isVillage = true -%}{%- else -%}{%- assign isVillage = false -%}{%- endif -%}
+{%- if url contains '/city/' or url contains "town" -%}{%- assign isCityTown = true -%}{%- else -%}{%- assign isCityTown = false -%}{%- endif -%}
+{%- if url contains '/village/' -%}{%- assign isVillage = true -%}{%- else -%}{%- assign isVillage = false -%}{%- endif -%}
 
 <!doctype html>
 
@@ -27,9 +29,9 @@ layout: compress
 
       {%- include header.html -%}
 
-      <main{% if page.url == "/" %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
+      <main{% if url == '/' %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
 
-        {% if page.url == "/" %}
+        {% if url == '/' %}
 
           <div class="container pb-1 lead-badge">
             <a class="badge badge-primary" data-toggle="collapse" href="#collapseArea" role="button" aria-expanded="false" aria-controls="collapseArea">Виберіть місцевіть</a> <span class="badge badge-light text-wrap text-left">де б ви хотіли <strong>знайти, купити чи продати нерухомість</strong> або</span>
@@ -93,16 +95,16 @@ layout: compress
     {% include modals/net-realestate-modal.html %}
 
     {%- capture name -%}{%- include footer/contact.html legal='name' -%}{%- endcapture -%}
-    {%- assign slug = page.dir | split: "/" | last -%}
-    {%- assign l = page.url | split: '/' -%}
+    {%- assign slug = dir | split: '/' | last -%}
+    {%- assign l = url | split: '/' -%}
 
-    {%- if page.url contains 'map.html' -%}
+    {%- if url contains '/map.html' -%}
       {%- if l.size == 4 -%}
-        {%- assign data = page.url | split: '/' | slice: 2, 4 | join: '/' | prepend: 'data/' -%}
+        {%- assign data = url | split: '/' | slice: 2, 4 | join: '/' | prepend: 'data/' -%}
       {%- elsif l.size == 5 -%}
-        {%- assign data = page.url | split: '/' | slice: 3, 5 | join: '/' | prepend: 'data/' -%}
+        {%- assign data = url | split: '/' | slice: 3, 5 | join: '/' | prepend: 'data/' -%}
       {%- elsif l.size == 6 -%}
-        {%- assign data = page.url | split: '/' | slice: 3, 6 | join: '/' | prepend: 'data/' -%}
+        {%- assign data = url | split: '/' | slice: 3, 6 | join: '/' | prepend: 'data/' -%}
       {%- endif -%}
     {%- endif -%}
 

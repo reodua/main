@@ -1,6 +1,29 @@
 <div class="row mb-1">
   <div class="col-12">
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-{%- if page.layout == 'grid' and page.url contains '/index.html' -%}between{%- elsif page.layout == 'table' and page.url contains '/list.html' -%}between{%- else -%}end{%- endif -%}">
+      {%- if url contains '/all.html' -%}
+      {%- else -%}
+        {%- if page.layout == 'table' and page.url contains '/list.html' -%}
+        <div class="nav">
+          <a class="nav-item border-0" href="{{ page.dir }}">
+            <span class="sr-only">Переглянути записи блоками:</span>
+            <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи блоками">
+              <img src="/assets/images/icons/grid.svg" alt="grid">
+            </span>
+          </a>
+        </div>
+        {%- endif -%}
+        {%- if page.layout == 'grid' and page.url contains '/index.html' -%}
+        <div class="nav">
+          <a class="nav-item border-0" href="{{ page.dir | append: 'list.html' }}">
+            <span class="sr-only">Переглянути записи списком:</span>
+            <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи списком">
+              <img src="/assets/images/icons/list.svg" alt="list">
+            </span>
+          </a>
+        </div>
+        {%- endif -%}
+      {%- endif -%}
       <div class="h5 mb-0">
         <a class="badge badge-success mr-1" data-toggle="collapse" href="#thanks" role="button" aria-expanded="true" aria-controls="thanks" data-target=".thanks">Дякуємо!</a>
         <a class="badge badge-info mr-1" data-toggle="collapse" href="#please" role="button" aria-expanded="true" aria-controls="please" data-target=".please">Просимо!</a>

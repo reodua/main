@@ -1,7 +1,9 @@
 ---
 layout: compress
 ---
-
+{%- include start-ads.html -%}
+{%- include price.html -%}
+{%- include price-name.html -%}
 {%- capture fname -%}{%- include footer/contact.html legal="name" -%}{%- endcapture -%}
 {%- if page.url contains "city" or page.url contains "town" -%}{%- assign isCityTown = true -%}{%- else -%}{%- assign isCityTown = false -%}{%- endif -%}
 {%- if page.url contains "village" -%}{%- assign isVillage = true -%}{%- else -%}{%- assign isVillage = false -%}{%- endif -%}
@@ -19,7 +21,7 @@ layout: compress
 
       {%- include header.html -%}
 
-      <main{% if page.url == "/" %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
+      <main{% if page.url == '/' %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
 
         {% if page.url == "/" %}
 
@@ -90,35 +92,11 @@ layout: compress
       {% include modals/re-map-modal.html %}
     {%- endif -%}
 
-{% comment %}
-
-    {%- if page.url contains '/new.html' -%}
-      <script src="{{ '/assets/js/add.js' | relative_url }}"></script>
-      <script src="https://www.google.com/recaptcha/api.js?hl=uk"></script>
+    {%- assign slash_url = page.url | split: '/' -%}
+    {%- if slash_url.size == 6 and page.layout == 'property' -%}
+      {% include modals/re-map-modal.html %}
+      {% comment %}{% include modals/re-property-map-modal.html %}{% endcomment %}
     {%- endif -%}
-
-    {%- if page.url contains '/construction.html' and page.layout == 'sells'-%}
-      <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-      <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
-      <script>
-
-        var elem = document.querySelector('.seller-list');
-        var msnry = new Masonry( elem, {
-          itemSelector: '.col-lg-4',
-          columnWidth: '.col-lg-4',
-          percentPosition: true
-        });
-
-        var infScroll = new InfiniteScroll( elem, {
-          append: '.col-sm-6',
-          outlayer: msnry,
-          status: '.page-load-status',
-        });
-
-      </script>
-    {%- endif -%}
-
-{% endcomment %}
 
   </body>
 </html>

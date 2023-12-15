@@ -18,7 +18,7 @@
     {%- elsif slash.size >= 3 and page.dir != '/region/city/' and page.dir != '/district/town/'-%}
       <script src="{{ "/assets/js/main.tl.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
     {%- else -%}
-      <script src="{{ "/assets/js/main.t.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+      <!-- #0 <script src="{{ "/assets/js/main.t.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script> -->
     {%- endif -%}
   {%- elsif page.table == 2 -%}
     {%- if page.url contains 'map_.html' -%}
@@ -34,7 +34,9 @@
     {%- if page.url contains 'map_.html' -%}
     {%- elsif page.url contains 'map.html' -%}
       <script src="{{ "/assets/js/main.m.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
-    {%- elsif slash.size >= 3 and page.dir != '/region/city/' and page.dir != '/district/town/'-%}
+    {%- elsif slash.size >= 3 and page.dir != '/region/city/' and page.dir != '/district/town/' -%}
+      <script src="{{ "/assets/js/main.l.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+    {%- elsif page.layout == 'property' -%}
       <script src="{{ "/assets/js/main.l.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
     {%- elsif page.dir != '/laws/' or page.dir != '/docs/' -%}
       <script src="{{ "/assets/js/main.t.js" | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>

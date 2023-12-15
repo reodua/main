@@ -28,11 +28,14 @@
     <div class="section px-2 collapse navbar-collapse" id="{{ region }}-realestate-section">
       <ul class="navbar-nav">
         {%- for s in ss -%}
-          {%- assign slug = s.url | split: '/' | last -%}
-          {%- assign current = s.url | remove: slug | remove: '//' | append: '/' -%}
-          {%- if url == current and s.navhide != 1 and s.title != '' -%}
+          {%- assign slug = s.dir | split: '/' | last -%}
+          {%- assign current = s.dir | remove: slug | replace_first: '//', '/' -%}
+          {%- if url == current and s.navhide != 1 and s.title != '' and url contains '/index.html' -%}
+            {%- include home/navitem.html -%}
+          {%- else -%}
             {%- include home/navitem.html -%}
           {%- endif -%}
+
         {%- endfor -%}
       </ul>
     </div>
