@@ -1,25 +1,76 @@
 {%- if page.layout == 'property' -%}
-{%- assign type = page.type -%}
-{%- assign i_price = page.price_sqmt | default: page.price -%}
-{%- assign surface = page.surface -%}
-{%- assign surface_land = page.surface_land -%}
-{%- assign rooms = page.rooms -%}
-{%- assign floor = page.floor -%}
-{%- assign floors = page.floors -%}
-{%- assign location = page.location -%}
-{%- assign address = page.address -%}
-{%- assign object = page.object -%}
+    {%- assign type = page.type -%}
+    {%- assign i_price = page.price_sqmt | default: page.price -%}
+    {%- assign surface = page.surface -%}
+    {%- assign surface_land = page.surface_land -%}
+    {%- assign rooms = page.rooms -%}
+    {%- assign floor = page.floor -%}
+    {%- assign floors = page.floors -%}
+    {%- assign i_region = page.region -%}
+    {%- assign i_location = page.location -%}
+    {%- assign address = page.address -%}
+    {%- assign object = page.object -%}
 {%- else -%}
-{%- assign type = offer.type -%}
-{%- assign i_price = offer.price_sqmt | default: offer.price -%}
-{%- assign surface = offer.surface -%}
-{%- assign surface_land = offer.surface_land -%}
-{%- assign rooms = offer.rooms -%}
-{%- assign floor = offer.floor -%}
-{%- assign floors = offer.floors -%}
-{%- assign location = offer.location -%}
-{%- assign address = offer.address -%}
-{%- assign object = offer.object -%}
+    {%- assign type = offer.type -%}
+    {%- assign i_price = offer.price_sqmt | default: offer.price -%}
+    {%- assign surface = offer.surface -%}
+    {%- assign surface_land = offer.surface_land -%}
+    {%- assign rooms = offer.rooms -%}
+    {%- assign floor = offer.floor -%}
+    {%- assign floors = offer.floors -%}
+    {%- assign i_region = offer.region -%}
+    {%- assign i_location = offer.location -%}
+    {%- assign address = offer.address -%}
+    {%- assign object = offer.object -%}
 {%- endif -%}
+
 {% assign a_price = i_price | remove: '$' | remove: '€' %}
-{%- if type contains site.data.lang-uk.re_house -%}{%- assign isHouse = true -%}{%- else -%}{%- assign isHouse = false -%}{%- endif -%}<strong>{{ start_ads }}</strong> {% if type contains site.data.lang-uk.re_land %} {{ site.data.lang-uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.lang-uk.re_total }}"><b>{{ surface_land }}</b></abbr>&nbsp;м² ({{ surface_land | divided_by: 10000.0000 | round: 4 }} га), {% else %}{% if surface %}{{ site.data.lang-uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.lang-uk.re_total }}"><b>{{ surface }}</b></abbr> м², {% endif %}{% if rooms %}{% include rooms.html rooms=rooms type=type %}, {% endif %}{% if floor and isHouse == false %}{{ site.data.lang-uk.re_na }} {{ floor }}{{ site.data.lang-uk.re_mu }} {{ site.data.lang-uk.re_floorci }}, {% endif %}{% if type contains 'приміщення' or type == 'Гараж' %}у споруди{% else %}у будинку{% endif %} {% include floors.html floors=floors -%}, {% endif %}{% if location %}{{ site.data.lang-uk.re_location }} {{ site.data.lang-uk.re_at }} <strong>{{ location }}</strong> {% endif %}{% if address %}{{ site.data.lang-uk.re_address }} <b>{{ address }}</b>{% if page.object and page.url == '/' %}, ({{ site.data.lang-uk.re_rc }} {{ object }}){% endif %}, {% endif %}{% if page.region | default: offer.region %}<b>{{ page.region | default: offer.region }}</b>, {% endif %}{{ price_name }} <abbr data-toggle="tooltip" title="{% if i_price contains '$' %}${% elsif i_price contains '€' %}€{% endif %}{%- include numf.html number=a_price ts='&nbsp;' decimals=0 -%}{% if i_price contains '$' or i_price contains '€' %}{% else %}₴{% endif %}">{{ price }}</abbr>&nbsp;₴
+
+{%- if type contains site.data.lang-uk.re_house -%}
+    {%- assign isHouse = true -%}
+{%- else -%}
+    {%- assign isHouse = false -%}
+{%- endif -%}
+
+<strong>{{ start_ads }}</strong>
+
+{% if type contains site.data.lang-uk.re_land %}
+    {{ site.data.lang-uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.lang-uk.re_total }}"><b>{{ surface_land }}</b></abbr>&nbsp;м² ({{ surface_land | divided_by: 10000.0000 | round: 4 }} га),
+{% else %}
+
+    {% if surface %}
+        {{ site.data.lang-uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.lang-uk.re_total }}"><b>{{ surface }}</b></abbr> м²,
+    {% endif %}
+
+    {% if rooms %}
+        {% include rooms.html rooms=rooms type=type %},
+    {% endif %}
+
+    {% if floor and isHouse == false %}
+        {{ site.data.lang-uk.re_na }} {{ floor }}{{ site.data.lang-uk.re_mu }} {{ site.data.lang-uk.re_floorci }},
+    {% endif %}
+
+    {% if type contains 'приміщення' or type == 'Гараж' %}
+        у споруди
+    {% else %}
+        у будинку
+    {% endif %}
+
+    {% include floors.html floors=floors %},
+{% endif %}
+
+{% if i_location != '' %}
+    {{ site.data.lang-uk.re_location }} {{ site.data.lang-uk.re_at }} <strong>{{ i_location }}</strong>
+{% endif %}
+
+{%- if address -%}
+    {{ site.data.lang-uk.re_address }} <strong>{{ address }}</strong>{% if page.object and page.url == '/' %}, ({{ site.data.lang-uk.re_rc }} {{ object }}){% endif %},
+{%- endif -%}
+
+{% if i_region != '' %}
+    <strong>{{ i_region }}</strong>,
+{% endif %}
+
+{{ price_name }}
+
+<abbr data-toggle="tooltip" title="{% if i_price contains '$' %}${% elsif i_price contains '€' %}€{% endif %}{%- include numf.html number=a_price ts='&nbsp;' decimals=0 -%}{% if i_price contains '$' or i_price contains '€' %}{% else %}₴{% endif %}">{{ price }}</abbr>&nbsp;₴
