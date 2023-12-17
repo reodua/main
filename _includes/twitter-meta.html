@@ -3,7 +3,7 @@
 <meta name="twitter:creator" content="@realestate_ua">
 <meta name="twitter:title" content="{{ title | remove: ' · Мережа Вебсайтів Нерухомості' }}">
 {%- if page.layout == 'property' -%}
-  <meta name="twitter:description" content="{{ name_description | remove: '&nbsp;' | strip_html }}{% if page.seo and page.seo != '' %}, {{ page.seo | smartify }}{% endif %}{% if page.description and page.description != '' %}, {{ page.description | downcase | smartify }}{% endif %}" />
+  <meta name="twitter:description" content="{{ name_description | remove: '&nbsp;' | strip_html }}{%- if seo_description != '' -%}, {{ seo_description }}{%- endif -%}{% if page.description and page.description != '' %}, {{ page.description | downcase | smartify }}{% endif %}" />
 {%- else -%}
   <meta name="twitter:description" content="{{ page.description | default: site.description | smartify }}">
 {%- endif -%}
