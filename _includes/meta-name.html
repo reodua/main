@@ -19,7 +19,7 @@
   {% assign addtitle = index[0].title | split: ' ' | slice: 1, 4 | join: ' ' %}
   <title>{{ title | remove: ' · Мережа Вебсайтів Нерухомості' }} {{ addtitle | smartify }}</title>
   <link rel="shortlink" href="{{ site.url }}" />
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />  
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
   {%- capture folder -%}/assets/images/{{ page.phone }}/{{ page.uid }}/{%- endcapture -%}
   {%- assign files = site.static_files | where_exp: 'i', "i.path contains folder and i.extname == '.jpg' or i.extname == '.jpeg'" -%}
   <link rel="image_src" href="{{ files[0].path | default: default_image | absolute_url }}" />
@@ -38,7 +38,7 @@
   {%- endif -%}
 {%- endif -%}
 {%- if page.layout == 'property' -%}
-  {% capture name_description %}{%- include body-ads.html -%}{% endcapture %}
+  {%- capture name_description -%}{% include body-ads.html %}{%- endcapture -%}
   {%- capture seo_keywords -%}{%- include seo-tags.html type=page.type rent=page.rent -%}{%- endcapture -%}
   <meta name="keywords" content="{{ seo_keywords | strip_html | default: site.keywords | smartify }}" />
   <meta name="description" content="{{ name_description | remove: '&nbsp;' | strip_html }}{% if page.seo and page.seo != '' %}, {{ page.seo | smartify }}{% endif %}{% if page.description and page.description != '' %}, {{ page.description | downcase | smartify }}{% endif %}" />

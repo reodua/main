@@ -1,27 +1,27 @@
 {%- if page.layout == 'property' -%}
-    {%- assign type = page.type -%}
-    {%- assign i_price = page.price_sqmt | default: page.price -%}
-    {%- assign surface = page.surface -%}
-    {%- assign surface_land = page.surface_land -%}
-    {%- assign rooms = page.rooms -%}
-    {%- assign floor = page.floor -%}
-    {%- assign floors = page.floors -%}
-    {%- assign i_region = page.region -%}
-    {%- assign i_location = page.location -%}
-    {%- assign address = page.address -%}
-    {%- assign object = page.object -%}
+{%- assign type = page.type | strip-%}
+{%- assign i_price = page.price_sqmt | default: page.price -%}
+{%- assign surface = page.surface -%}
+{%- assign surface_land = page.surface_land -%}
+{%- assign rooms = page.rooms -%}
+{%- assign floor = page.floor -%}
+{%- assign floors = page.floors -%}
+{%- assign i_region = page.region | strip -%}
+{%- assign i_location = page.location | strip -%}
+{%- assign address = page.address -%}
+{%- assign object = page.object | strip -%}
 {%- else -%}
-    {%- assign type = offer.type -%}
-    {%- assign i_price = offer.price_sqmt | default: offer.price -%}
-    {%- assign surface = offer.surface -%}
-    {%- assign surface_land = offer.surface_land -%}
-    {%- assign rooms = offer.rooms -%}
-    {%- assign floor = offer.floor -%}
-    {%- assign floors = offer.floors -%}
-    {%- assign i_region = offer.region -%}
-    {%- assign i_location = offer.location -%}
-    {%- assign address = offer.address -%}
-    {%- assign object = offer.object -%}
+{%- assign type = offer.type | strip -%}
+{%- assign i_price = offer.price_sqmt | default: offer.price -%}
+{%- assign surface = offer.surface -%}
+{%- assign surface_land = offer.surface_land -%}
+{%- assign rooms = offer.rooms -%}
+{%- assign floor = offer.floor -%}
+{%- assign floors = offer.floors -%}
+{%- assign i_region = offer.region | strip -%}
+{%- assign i_location = offer.location | strip -%}
+{%- assign address = offer.address -%}
+{%- assign object = offer.object | strip -%}
 {%- endif -%}
 
 {% assign a_price = i_price | remove: '$' | remove: '€' %}
@@ -64,12 +64,10 @@
 {% endif %}
 
 {%- if address -%}
-    {{ site.data.lang-uk.re_address }} <strong>{{ address }}</strong>{% if page.object and page.url == '/' %}, ({{ site.data.lang-uk.re_rc }} {{ object }}){% endif %},
+    {{ site.data.lang-uk.re_address }} <strong>{{ address }}</strong>{% if object != '' %}, ({{ site.data.lang-uk.re_rc }} {{ object }}){% endif %},
 {%- endif -%}
 
-{% if i_region != '' %}
-    <strong>{{ i_region }}</strong>,
-{% endif %}
+{% if i_region != '' %} <strong>{{ i_region }}</strong>,{% endif %}
 
 {{ price_name }}
 

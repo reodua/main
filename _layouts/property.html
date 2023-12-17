@@ -22,12 +22,13 @@ layout: default
     <hr>
     {%- include seo-tags.html type=page.type rent=page.rent -%}
     <hr>
+    {% include thanks-please.html %}
     {%- capture folder -%}/assets/images/{{ page.phone }}/{{ page.uid }}/{%- endcapture -%}
     {%- assign files = site.static_files | where_exp: 'i', "i.path contains folder and i.extname == '.jpg' or i.extname == '.jpeg'" -%}
     {%- assign isImage = files | strip_newlines -%}
     {%- if isImage -%}{%- include grid/images.html files=files folder=folder -%}{%- endif -%}
 
-    <h2>Основні характеристики</h2>
+    <h2 class="mt-2">Основні характеристики</h2>
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
       <div class="col">
@@ -35,35 +36,35 @@ layout: default
         <dl class="properties">
           <dt>Тип нерухомості що продається</dt>
           <dd>{{ page.type }}</dd>
-    
+
           {%- if page.rooms -%}
             <dt>Кількість кімнат</dt>
-            <dd>{%- include rooms.html rooms=page.rooms -%}</dd>
+            <dd>{{ page.type }} має {% include rooms.html rooms=page.rooms -%}</dd>
           {%- endif -%}
-    
+
           {%- if page.surface -%}
             <dt>Загальна площа об'єкта нерухомості</dt>
             <dd>{{ page.surface }} метрів квадратних (м²)</dd>
           {%- endif -%}
-    
+
           {%- if page.surface_land -%}
             <dt>Загальна площа земельної ділянки</dt>
             <dd>{{ page.surface_land }} метрів квадратних (м²) ({{ page.surface_land | divided_by: 10000.0000 | round: 4 }} га)</dd>
           {%- endif -%}
-    
+
           {%- if page.floor -%}
             <dt>Поверх на якому знаходиться об'єкт нерухомості</dt>
             <dd>Розташовано на {{ page.floor }}-му поверсі споруди</dd>
           {%- endif -%}
-    
+
           {%- if page.floors -%}
             <dt>Кількість поверхів у об'єкта нерухомості</dt>
             <dd>У будинку {% include floors.html floors=page.floors %}</dd>
           {%- endif -%}
-    
+
           {%- if page.address or page.location or page.region -%}
           <dt>Адреса</dt>
-          <dd>
+          <dd{% if page.object %} class="mb-0"{% endif %}>
             {%- if page.coordinates -%}
               <a class="marker" data-coord="{{ page.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" rel="nofollow" aria-haspopup="true" aria-expanded="false" aria-label="{%- if page.rent == 1 -%}{{ site.data.lang-uk.re_object_rent }}{%- else -%}{{ site.data.lang-uk.re_object_sell }}{%- endif -%} {{ site.data.lang-uk.re_on_map }}">
                 {{ page.address }}{% if page.location %}, {{ page.location }}{% endif %}{% if page.region %}, {{ page.region }}{% endif %}
@@ -72,8 +73,9 @@ layout: default
               {{ page.address }}{% if page.location %}, {{ page.location }}{% endif %}{% if page.region %}, {{ page.region }}{% endif %}
             {%- endif -%}
           </dd>
+          {% if page.object %}<dd>Житловий комплекс "{{ page.object }}"</dd>{% endif %}
           {%- endif -%}
-    
+
         </dl>
 
       </div>
@@ -81,20 +83,20 @@ layout: default
 
         <dl class="properties">
 
-          <dt>{% if page.tent %}Орендодавець{% else %}Продавець{% endif %}</dt>
+          <dt>{% if page.rent %}Орендодавець{% else %}Продавець{% endif %}</dt>
           <dd><a href="{{ site.url }}/region/{{ site.region_slug }}/?id={{ page.phone }}" title="{{ site.data.lang-uk.offers }}">{{ page.seller }}</a></dd>
 
-          <dt>Контакти {% if page.tent %}орендодавеця{% else %}продавця{% endif %}</dt>
+          <dt>Контакти {% if page.rent %}орендодавеця{% else %}продавця{% endif %}</dt>
           <dd>{%- include footer/phone.html legal=page.phone type='property' -%}</dd>
-          
+
           <dt>Виставлено на продаж у <a href="{{ site.main_url }}" target="_blank">Мережі Вебсайтів Нерухомості</a></dt>
           <dd>{%- include date.html date=page.date -%}</dd>
-    
+
           {%- if page.last_modified_at -%}
             <dt>Останнє оновлення оголошення</dt>
             <dd>{%- include date.html date=page.last_modified_at -%}</dd>
           {%- endif -%}
-    
+
           {%- if page.price or page.price_sqmt -%}
             <dt>Вартість нерухомості</dt>
             <dd class="mb-0">{% if page.last_modified_at %}Станом на {% include date.html date=page.last_modified_at %}, ціна {% endif %}{{ price }} гривень</dd>
@@ -111,12 +113,12 @@ layout: default
             {% endif %}
             <dd>Конвертовано за курсом {% if in_price contains '$' %}{{ rate }}{% elsif in_price contains '€' %}{{ rate }}{% else %}{{ rate }}{% endif %} гривень за {% if in_price contains '$' %}{{ symbol }}1{% elsif in_price contains '€' %}{{ symbol }}1{% else %}$1{% endif %}</dd>
           {%- endif -%}
-    
+
         </dl>
 
       </div>
     </div>
-    
+
     {%- assign isContent = content | strip_newlines -%}
     {%- if isContent == '' -%}
     {%- else -%}
@@ -147,7 +149,7 @@ layout: default
         {%- for item in estates %}{%- if item.url == page.url %}{%- assign index = forloop.index -%}{%- endif %}{%- endfor -%}
         {%- include pagination-re.html -%}
       </div>
-    </div>  
+    </div>
 
   </div>
 </div>
