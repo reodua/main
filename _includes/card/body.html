@@ -3,4 +3,13 @@
 {%- include price-name.html -%}
 {%- include price.html -%}
 {%- include start-ads.html -%}
-{%- include body-ads.html -%}{%- if split.size <= 2 or split.size == 3 and page.dir contains '/city/' or page.dir contains '/town/' -%}{%- if offer.page == '1' -%},{{ linkPage }}{%- endif -%}{%- if offer.link and offer.link != '' -%},{{ linkPost }}{%- endif -%},&nbsp;{%- include footer/phone.html legal=offer.phone type='dropdown' -%}{%- elsif split.size == 3 and page.dir contains '/city/' or page.dir contains '/town/' -%}{%- if offer.page and offer.page == '1' -%},{{ linkPage }}{%- endif -%}{%- if offer.link and offer.link != '' -%},{{ linkPost }}{%- endif -%},&nbsp;{%- include footer/phone.html legal=offer.phone type='dropdown' -%}{%- endif -%}
+{%- include body-ads.html -%}
+{%- if split.size <= 2 or split.size == 3 and page.dir contains '/city/' or page.dir contains '/town/' -%}
+    {%- if offer.page and offer.page == '1' -%}
+        {{ linkPage }}
+    {%- endif -%}
+    {%- if offer.link and offer.link != '' -%}
+        {{ linkPost }}
+    {%- endif -%}
+    ,&nbsp;{%- include footer/phone.html legal=offer.phone type='dropdown' -%}
+{%- endif -%}
