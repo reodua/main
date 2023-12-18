@@ -93,9 +93,10 @@ layout: compress
     {%- endif -%}
 
     {%- assign slash_url = page.url | split: '/' -%}
-    {%- if slash_url.size == 6 and page.layout == 'property' -%}
+    {%- if slash_url.size == 5 and page.layout == 'property' -%}
       {% include modals/re-map-modal.html %}
-      {% comment %}{% include modals/re-property-map-modal.html %}{% endcomment %}
+    {%- elsif slash_url.size == 6 and page.layout == 'property' -%}
+      {% include modals/re-map-modal.html %}
     {%- endif -%}
 
   </body>
