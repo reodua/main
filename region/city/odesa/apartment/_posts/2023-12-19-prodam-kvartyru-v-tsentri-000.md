@@ -17,7 +17,7 @@ region:
 location: м. Одеса
 address: провулок Манежний, 4, Приморський район
 object:
-coordinates:
+coordinates: 46.475207,30.722191
 date: 2023-12-19T00:00:00.000Z
 seller: Олексій Хайлов
 phone: 380631544504
