@@ -124,7 +124,7 @@ layout: default
     {%- else -%}
       <hr>
       <h2>Опис</h2>
-      {{ content }}
+      {{ content | default: page.description }}
     {%- endif -%}
 
     {% comment %}
