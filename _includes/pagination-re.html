@@ -5,7 +5,7 @@
         {%- assign index_next = index | plus: 1 -%}
         {%- if forloop.index == index_prev -%}
             {%- assign prev = item -%}
-            <li class="page-item"></li>
+            <li class="page-item">
               <a class="page-link" href="{{ prev.url }}" aria-label="Попередній оголошення" title="{{ prev.title }}">
                 <span aria-hidden="true">&laquo;</span>
               </a>

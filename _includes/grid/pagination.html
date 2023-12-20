@@ -1,3 +1,4 @@
+{% assign url = include.cat | replace: ',', '/' %}
 {% if paginator.total_pages > 1 %}
 <nav aria-label="Посторінкова навігація">
   <ul class="pagination pagination-sm justify-content-end">
