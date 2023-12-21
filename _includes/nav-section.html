@@ -2,6 +2,8 @@
 
 {%- if url contains '/map.html' -%}
   {%- assign size = back | size | minus: 0 -%}
+{%- elsif size > 4 and page.layout == 'grid' -%}
+  {%- assign size = back | size | minus: 2 -%}
 {%- else -%}
   {%- assign size = back | size | minus: 1 -%}
 {%- endif -%}
