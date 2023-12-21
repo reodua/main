@@ -4,24 +4,26 @@
       {%- if url contains '/all.html' -%}
       {%- else -%}
         {%- if page.layout == 'table' and page.url contains '/list.html' -%}
-        <div class="nav">
-          <a class="nav-item border-0" href="{{ page.dir }}">
-            <span class="sr-only">Переглянути записи блоками:</span>
-            <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи блоками">
-              <img src="/assets/images/icons/grid.svg" alt="grid">
-            </span>
-          </a>
-        </div>
+          <div class="nav">
+            <a class="nav-item border-0" href="{{ page.dir }}">
+              <span class="sr-only">Переглянути записи блоками:</span>
+              <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи блоками">
+                <img src="/assets/images/icons/grid.svg" alt="grid">
+              </span>
+            </a>
+          </div>
         {%- endif -%}
         {%- if page.layout == 'grid' and page.url contains '/index.html' -%}
-        <div class="nav">
-          <a class="nav-item border-0" href="{{ page.dir | append: 'list.html' }}">
-            <span class="sr-only">Переглянути записи списком:</span>
-            <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи списком">
-              <img src="/assets/images/icons/list.svg" alt="list">
-            </span>
-          </a>
-        </div>
+          {%- assign switch_size = back | size -%}
+          {%- if switch_size > 5 -%}{% assign switch_link = back_dir | append: 'list.html' %}{%- else -%}{% assign switch_link = page.dir | append: 'list.html' %}{%- endif -%}
+          <div class="nav">
+            <a class="nav-item border-0" href="{{ page.dir | append: 'list.html' }}">
+              <span class="sr-only">Переглянути записи списком:</span>
+              <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи списком">
+                <img src="/assets/images/icons/list.svg" alt="list">
+              </span>
+            </a>
+          </div>
         {%- endif -%}
       {%- endif -%}
       <div class="h5 mb-0">
