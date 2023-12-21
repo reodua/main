@@ -17,7 +17,7 @@
           {%- assign switch_size = back | size -%}
           {%- if switch_size > 5 -%}{% assign switch_link = back_dir | append: 'list.html' %}{%- else -%}{% assign switch_link = page.dir | append: 'list.html' %}{%- endif -%}
           <div class="nav">
-            <a class="nav-item border-0" href="{{ page.dir | append: 'list.html' }}">
+            <a class="nav-item border-0" href="{{ switch_link }}">
               <span class="sr-only">Переглянути записи списком:</span>
               <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Записи списком">
                 <img src="/assets/images/icons/list.svg" alt="list">
