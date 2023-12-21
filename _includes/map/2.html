@@ -4,7 +4,8 @@
   {%- for 3 in 3s -%}
     {%- assign slug = 3.dir | split: '/' | last -%}
     {%- assign current = 3.url | remove: slug | remove: '//' | append: '/' -%}
-    {%- if 3.url contains '/index.html' and 3.navhide != 1 and 3.title != '' -%}
+    {%- assign 3_size = 3.dir | split: '/' | size -%}
+    {%- if 3.url contains '/index.html' and 3.navhide != 1 and 3.title != '' and 3_size < 6 -%}
       <li class="mb-2">
         {%- if 3.url == page.url -%}
           <span>{%- if 3.navtitle -%}{{ 3.navtitle }}{%- else -%}{{ 3.title }}{%- endif -%}</span>
@@ -12,7 +13,7 @@
           <a href="{{ 3.url | remove: 'index.html' }}">{{ 3.navtitle }}</a>
         {%- endif -%}
       </li>
-    {%- elsif include.current == current and 3.navhide != 1 and 3.title != '' -%}
+    {%- elsif include.current == current and 3.navhide != 1 and 3.title != '' and 3_size < 6 -%}
       <li class="mb-2">
         {%- if 3.url == page.url -%}
           <span>{{ 3.navtitle }}</span>
