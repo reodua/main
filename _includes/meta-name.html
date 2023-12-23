@@ -1,5 +1,5 @@
 {%- assign cou = page.dir | split: '/' -%}
-{%- if page.dir contains 'city' or page.dir contains 'town' and cou.size == 5 -%}
+{%- if page.dir contains '/city/' or page.dir contains '/town/' and cou.size == 5 -%}
 {%- assign cat = cou | slice: 3, 2 | join: '_' -%}
 {%- elsif page.dir contains 'district' and cou.size == 4 -%}
 {%- assign cat = cou | slice: 2, 2 | join: '_' -%}
@@ -52,9 +52,9 @@
 {%- if page.layout == 'property' -%}
   <meta name="locality" content="{{ page.address }}{% if page.location %}, {{ page.location }}{% endif %}{% if page.region %}, {{ page.region }}{% endif %}" />
 {%- else -%}
-  {%- if location and back.size >= 4 and page.dir contains 'city' or page.dir contains 'town' -%}
+  {%- if location and back.size >= 4 and page.dir contains '/city/' or page.dir contains '/town/' -%}
     <meta name="locality" content="{{ site.data.lang-uk.city }} {{ location }}" />
-  {%- elsif back.size >= 3 and page.dir contains 'district' and page.dir != '/district/town/' or back.size >= 4 and page.dir contains 'district' -%}
+  {%- elsif back.size >= 3 and page.dir contains 'district' and page.dir != '/district/town/' or back.size >= 4 and page.dir contains '/district/' -%}
     <meta name="locality" content="{{ location }} {{ site.data.lang-uk.district }}" />
   {%- elsif page.url == '/district/town/' -%}
   {%- endif -%}
