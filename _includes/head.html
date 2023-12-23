@@ -25,7 +25,9 @@
   page.url contains '/contacts.html' or page.url contains '/services.html' or page.url contains '/terms-and-conditions.html' or page.url contains '/help.html' or page.url contains '/new.html' or page.url contains '/add.html' or page.url contains '/added.html' or page.dir contains '/news/' or page.dir contains '/articles/' or page.dir contains '/docs/' or page.dir contains '/laws/'
 {% endcomment %}
 
-{% if page.dir == '/' and page.url != '/index.html' %}
+<h3>{{ back.size }}</h3>
+
+{% if page.dir == '/' or page.url != '/index.html' or back.size == 1 %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 4 or back.size == 5 %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
