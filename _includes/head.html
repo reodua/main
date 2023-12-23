@@ -21,6 +21,8 @@
 {%- include folder.html dir='/assets/images/locations/' slug=pic -%}
 {%- include folder.html dir='/assets/images/logo/' slug=pic -%}
 
+<h3>{{ page.url }}</h3>
+
 {% if back.size == 0 and page.url != '/index.html' %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 4 or back.size == 5 %}
