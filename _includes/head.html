@@ -23,7 +23,7 @@
 
 {%- capture title -%}
   {%- if page.title -%}
-    {{ page.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %}{%- if back.size == 4 or back.size == 5 and page.dir contains '/district/' or and page.dir contains '/region/' -%} · {{ site.title | smartify }}{% endif %}
+    {{ page.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %}{% if back.size == 4 or back.size == 5 and page.dir contains '/district/' or apage.dir contains '/region/' %} · {{ site.title | smartify }}{% endif %}
   {%- else -%}
     {{ site.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %} · {{ site.name | smartify }}
   {%- endif -%}
