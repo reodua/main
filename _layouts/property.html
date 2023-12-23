@@ -127,7 +127,7 @@ layout: default
     {%- else -%}
       <hr>
       <h2>Опис</h2>
-      {% if page.description == '' %}<p>{{ page.description }}.</p>{% endif %}
+      {% if page.description != '' %}<p>{{ page.description }}.</p>{% endif %}
       {{ content }}
     {%- endif -%}
 
