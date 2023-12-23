@@ -21,9 +21,17 @@
 {%- include folder.html dir='/assets/images/locations/' slug=pic -%}
 {%- include folder.html dir='/assets/images/logo/' slug=pic -%}
 
+{% if page.url contains '/contacts.html' or page.url contains '/services.html' or page.url contains '/terms-and-conditions.html' or page.url contains '/new.html' or page.url contains '/add.html' or page.url contains '/added.html' or page.dir contains '/news/' or page.dir contains '/articles/' or page.dir contains '/docs/' or page.dir contains '/laws/' %}
+  {%- assign end_title = site.title | prepend: ' · ' -%}
+{% elsif back.size == 4 or back.size == 5 %}
+  {%- assign end_title = site.title | prepend: ' · ' -%}
+{% elsif back.size == 2 or back.size == 3 %}
+  {%- assign end_title = site.region | prepend: ' · ' -%}
+{% endif %}
+
 {%- capture title -%}
   {%- if page.title -%}
-    {{ page.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %}{% if back.size == 4 or back.size == 5 %} · {{ site.title }}{% elsif back.size == 2 or back.size == 3 %} · {{ site.region }}{% endif %}
+    {{ page.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %}{{ end_title }}
   {%- else -%}
     {{ site.title | smartify }}{% if tlocation != '' %}{{ tlocation }}{% endif %} · {{ site.name }}
   {%- endif -%}
