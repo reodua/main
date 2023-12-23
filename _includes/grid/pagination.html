@@ -4,7 +4,7 @@
   <ul class="pagination justify-content-end">
     {% if paginator.previous_page %}
     <li class="page-item">
-      <a class="page-link prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Попередня сторінка">
+      <a class="page-link page-pre" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Попередня сторінка">
         <span aria-hidden="true">❮
           {% comment %}
             <svg width="8" height="16" viewBox="0 0 8 13">
@@ -20,7 +20,7 @@
       </a>
     {% else %}
     <li class="page-item">
-      <span class="page-link prev">
+      <span class="page-link page-pre">
         <span aria-hidden="true">❮
           {% comment %}
             <svg width="8" height="16" viewBox="0 0 8 13">
@@ -117,7 +117,7 @@
     {% endfor %}
     {% if paginator.next_page %}
     <li class="page-item">
-      <a class="page-link next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Наступна сторінка">
+      <a class="page-link page-next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Наступна сторінка">
         <span aria-hidden="true">❯
           {% comment %}
             <svg width="8" height="16" viewBox="0 0 8 13">
@@ -134,7 +134,7 @@
     </li>
     {% else %}
     <li class="page-item">
-      <span class="page-link next">
+      <span class="page-link page-next">
         <span aria-hidden="true">❯
           {% comment %}
             <svg width="8" height="16" viewBox="0 0 8 13">
