@@ -21,11 +21,14 @@
 {%- include folder.html dir='/assets/images/locations/' slug=pic -%}
 {%- include folder.html dir='/assets/images/logo/' slug=pic -%}
 
-{% if back.size == 0 or page.url != '/' %}
-  {%- assign end_title = site.title | prepend: ' · ' -%}
+{% comment %}
 {% elsif page.dir contains region_slug %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif page.dir == '/news/' or page.dir == '/docs/' or page.dir == '/articles/' or page.dir == '/laws/' %}
+  {%- assign end_title = site.title | prepend: ' · ' -%}
+{% endcomment %}
+
+{% if back.size == 0 or page.url != '/' %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 2 or back.size == 3 %}
   {%- assign end_title = site.region | prepend: ' · ' -%}
