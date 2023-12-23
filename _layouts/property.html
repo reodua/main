@@ -144,10 +144,10 @@ layout: default
     {%- assign index = site.pages | sort: 'dir' | where_exp: 'i', 'i.dir == back_dir' -%}
     <hr>
     <div class="row">
-      <div class="col-auto mr-auto">
-        <span class="mr-1">&larr;</span><a href="{{ back_dir }}">{{ site.data.lang-uk.go_to }} {{ index[0].title | downcase }}</a>
+      <div class="col-10 pt-2">
+        <span class="mr-1">&larr;</span><a href="{{ back_dir }}">{{ site.data.lang-uk.to_section }} {{ index[0].title | downcase }}</a>
       </div>
-      <div class="col-auto">
+      <div class="col-2">
         {%- assign estates = site.posts | where_exp: 'i', 'i.url contains back_dir' -%}
         {%- assign index = 0 -%}
         {%- for item in estates %}{%- if item.url == page.url %}{%- assign index = forloop.index -%}{%- endif %}{%- endfor -%}
