@@ -39,7 +39,7 @@ layout: default
 
           {%- if page.rooms -%}
             <dt>Кількість кімнат</dt>
-            <dd>{{ page.type }} має {% include rooms.html rooms=page.rooms -%}</dd>
+            <dd>У об'єкта {% include rooms.html rooms=page.rooms -%}</dd>
           {%- endif -%}
 
           {%- if page.surface -%}
@@ -121,9 +121,13 @@ layout: default
 
     {%- assign isContent = content | strip_newlines -%}
     {%- if isContent == '' -%}
+      <hr>
+      <h2>Опис</h2>
+      <p>{{ page.description }}</p>
     {%- else -%}
       <hr>
       <h2>Опис</h2>
+      <p>{{ page.description }}</p>
       {% if page.description == '' %}{{ page.description }}.{% endif %} {{ content }}
     {%- endif -%}
 
