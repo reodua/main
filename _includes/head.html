@@ -28,11 +28,11 @@
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% endcomment %}
 
-{% if back.size == 0 or back.size == 1 and page.url != '/' %}
+{% if back.size == 0 and page.url != '/' %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 4 or back.size == 5 %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
-{% elsif back.size == 2 or back.size == 3 %}
+{% elsif back.size == 2 or page.dir contains region_slug or back.size == 3 %}
   {%- assign end_title = site.region | prepend: ' · ' -%}
 {% endif %}
 
