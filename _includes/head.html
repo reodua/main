@@ -28,15 +28,17 @@
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% endcomment %}
 
-<h6>{{back.size}} / {{page.dir}}</h6>
+<h6>{{back.size}} / {{page.dir}} / {{site.region_slug}}</h6>
 
 {% if back.size == 0 and page.url != '/' %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 4 or back.size == 5 %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
+{% elsif back.size == 2 and page.dir == '/news/' or page.dir == '/docs/' or page.dir == '/articles/' or page.dir == '/laws/' %}
+  {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 2 or back.size == 3 %}
   {%- assign end_title = site.region | prepend: ' · ' -%}
-{% elsif back.size == 2 and page.dir contains site.region_slug %}
+{% elsif back.size == 3 and page.dir contains site.region_slug %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% endif %}
 
