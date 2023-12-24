@@ -34,7 +34,7 @@
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% elsif back.size == 2 or back.size == 3 %}
   {%- assign end_title = site.region | prepend: ' · ' -%}
-{% elsif page.dir contains site.region_slug or page.dir == '/news/' or page.dir == '/docs/' or page.dir == '/articles/' or page.dir == '/laws/' %}
+{% elsif back.size == 3 and page.dir contains site.region_slug %}
   {%- assign end_title = site.title | prepend: ' · ' -%}
 {% endif %}
 
