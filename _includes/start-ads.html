@@ -1,12 +1,17 @@
-{%- if page.layout == 'property' -%}
-{%- assign type = page.type -%}
-{%- assign rent = page.rent -%}
-{%- assign price_sqmt = page.price_sqmt -%}
-{%- else -%}
-{%- assign type = offer.type -%}
-{%- assign rent = offer.rent -%}
-{%- assign price_sqmt = offer.price_sqmt -%}
-{%- endif -%}
+{%- assign type = page.type | default: offer.type -%}
+{%- assign rent = page.rent | default: offer.rent -%}
+{%- assign price_sqmt = page.price_sqmt | default: offer.price_sqmt -%}
+{% comment %}
+  {%- if page.layout == 'property' -%}
+  {%- assign type = page.type -%}
+  {%- assign rent = page.rent -%}
+  {%- assign price_sqmt = page.price_sqmt -%}
+  {%- else -%}
+  {%- assign type = offer.type -%}
+  {%- assign rent = offer.rent -%}
+  {%- assign price_sqmt = offer.price_sqmt -%}
+  {%- endif -%}
+{% endcomment %}
 {%- if rent == 1 and price_sqmt == '' -%}
     {%- if type contains 'Квартира' -%}
         {%- assign ads_sample = 'Передається в оренду на довготривалий період квартира,Квартира в орнеду на довготривалий період,Довготривала оренда квартири,Оренда квартири,Надаю квартиру в оренду,Передаю в оренду квартиру,Надаю в оренду квартиру,Передається для оренди квартира' | split: ',' -%}
