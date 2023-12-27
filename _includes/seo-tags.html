@@ -45,5 +45,21 @@
 <span class="px-1">здаю комерцію,</span>
 <span class="px-1">здам комерційну нерухомість,</span>
 {%- endif -%}
-<span class="pl-1"> нерухомість</span>
+{%- if type contains 'Гараж' and rent != 1 -%}
+<span class="pr-1">продаж гаража,</span>
+<span class="px-1">продам паркомісце,</span>
+<span class="px-1">продаж пакомісця,</span>
+<span class="px-1">продається гараж,</span>
+<span class="px-1">продам нерухомість,</span>
+{%- elsif type contains 'Гараж' and rent == 1 -%}
+<span class="pr-1">оренда гаража,</span>
+<span class="px-1">здам гараж,</span>
+<span class="px-1">оренда паркомісця,</span>
+<span class="px-1">здається гараж,</span>
+<span class="px-1">здаю місце для авто,</span>
+<span class="px-1">здам нерухомість,</span>
+{%- endif -%}
+<span class="pl-1">продаж,</span>
+<span class="pl-1">оренда,</span>
+<span class="pl-1">нерухомість</span>
 </p>
