@@ -1,4 +1,4 @@
-{%- assign slug = s.url | split: "/" | last -%}
+{%- assign slug = s.dir | split: '/' | last -%}
 {%- capture navlink -%}
   {%- if slug == 'commercial' -%}
     {{ site.data.lang-uk.title_tab_commercial }}
