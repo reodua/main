@@ -1,7 +1,14 @@
-{%- assign type = page.type | default: offer.type -%}
-{%- assign rent = page.rent | default: offer.rent -%}
-{%- assign price_base = page.price | default: offer.price -%}
-{%- assign price_sqmt = page.price_sqmt | default: offer.price_sqmt -%}
+{%- if page.layout == 'property' -%}
+    {%- assign type = page.type -%}
+    {%- assign rent = page.rent -%}
+    {%- assign price_base = page.price -%}
+    {%- assign price_sqmt = page.price_sqmt -%}
+{%- else -%}
+    {%- assign type = offer.type -%}
+    {%- assign rent = offer.rent -%}
+    {%- assign price_base = offer.price -%}
+    {%- assign price_sqmt = offer.price_sqmt -%}
+{%- endif -%}
 {%- if rent == '1' and price_base != '' and price_sqmt == '' -%}
     {%- if type contains 'Квартира' -%}
         {%- assign word_sample = 'ціна оренди квартири за місяць,вартість оренди квартири за місяць,оренда квартири за місяць коштує,оренда квартира за місяць вартує' | split: ',' -%}
