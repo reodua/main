@@ -101,8 +101,8 @@ pagination:
 
 jekyll_get_json:
   - data: estates
-   json: 'https://www.realestate.od.ua/region/data/estates.json'
-   cache: true
+    json: 'https://www.realestate.od.ua/region/data/estates.json'
+    cache: true
   - data: kyiv
     json: 'https://www.realestate.kyiv.ua/region/data/options.json'
     cache: true
