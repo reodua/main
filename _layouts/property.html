@@ -10,7 +10,7 @@ layout: default
 {% assign addtitle = index[0].title | split: ' ' | slice: 1, 4 | join: ' ' %}
 {% assign region = back_dir | split: '/' | last %}
 {%- include price-name.html -%}
-
+{% assign p_type = page.type %}
 <div class="row">
   <div class="col-12">
 
@@ -20,7 +20,7 @@ layout: default
 
     <h1>{{ page.title }} {{ addtitle }}, {{ price_name }} <span class="badge badge-primary">{{ price }}&nbsp;₴</span></h1>
     <hr>
-    {%- include seo-tags.html type=page.type rent=page.rent -%}
+    {%- include seo-tags.html type=p_type rent=page.rent -%}
     <hr>
     {% include thanks-please.html %}
     {%- capture folder -%}/assets/images/{{ page.phone }}/{{ page.uid }}/{%- endcapture -%}
@@ -35,11 +35,11 @@ layout: default
 
         <dl class="properties">
           <dt>Тип нерухомості що продається</dt>
-          <dd>{{ page.type }}</dd>
+          <dd>{{ p_type }}</dd>
 
           {%- if page.rooms -%}
-            <dt>Кількість {% if page.type contains 'приміщення' or page.type contains 'Гараж' %}приміщень{%- else -%}кімнат{%- endif -%}</dt>
-            <dd>У об'єкта {% include rooms.html type=page.type rooms=page.rooms -%}</dd>
+            <dt>Кількість {% if p_type contains 'приміщення' or p_type contains 'Гараж' %}приміщень{% else %}кімнат{%- endif -%}</dt>
+            <dd>У об'єкта {% include rooms.html type=p_type rooms=page.rooms -%}</dd>
           {%- endif -%}
 
           {%- if page.surface -%}
@@ -59,7 +59,7 @@ layout: default
 
           {%- if page.floors -%}
             <dt>Кількість поверхів у об'єкта нерухомості</dt>
-            <dd>У будинку {% include floors.html floors=page.floors %}</dd>
+            <dd>У {% if p_type contains 'приміщення' or p_type contains 'Гараж' %}споруди{% else %}будинку{% endif %} {% include floors.html floors=page.floors %}</dd>
           {%- endif -%}
 
           {%- if page.address or page.location or page.region -%}
