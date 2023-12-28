@@ -54,12 +54,12 @@ layout: default
 
           {%- if page.floor -%}
             <dt>Поверх на якому знаходиться об'єкт нерухомості</dt>
-            <dd>Розташовано на {{ page.floor }}-му поверсі {% if type contains 'приміщення' or type contains 'Гараж' %}споруди{%- else -%}будинку{%- endif -%}</dd>
+            <dd>Розташовано на {{ page.floor }}-му поверсі {% if type contains 'приміщення' or type contains 'Гараж' %}споруди{% else %}будинку{% endif %}</dd>
           {%- endif -%}
 
           {%- if page.floors -%}
             <dt>Кількість поверхів у об'єкта нерухомості</dt>
-            <dd>У {% if type contains 'приміщення' or type contains 'Гараж' %}споруди{%- else -%}будинку{%- endif -%} {% include floors.html floors=page.floors %}</dd>
+            <dd>У {% if type contains 'приміщення' or type contains 'Гараж' %}споруди{% else %}будинку{% endif %} {% include floors.html floors=page.floors %}</dd>
           {%- endif -%}
 
           {%- if page.address or page.location or page.region -%}
