@@ -37,7 +37,7 @@
               div.append('<div class="card my-2"><div class="card-body p-2"><strong>{{ site.data.lang-uk.re_sell }} <span class="text-lowercase">' + data[i].type + '</span></strong> {{ site.data.lang-uk.re_surface_total }} ' + data[i].surface + '&nbsp;{{ site.data.lang-uk.m }}, {{ site.data.lang-uk.re_rooms }} ' + data[i].rooms + ', {{ site.data.lang-uk.re_floorss }} ' + data[i].floor + ' {{ site.data.lang-uk.re_address }} ' + data[i].address + '' + reAdsLocation() + '' + reAdsRegion() + ', ' + reAdsPrice() + ', ' + reAdsTel() + '</div></div>');
             }
           } else {
-            div.append('<div class="alert alert-success mb-0" role="alert"> <a href="#" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | replace_first: 'Н', 'н' }}</div>');
+            div.append('<div class="alert alert-success mb-0" role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</div>');
           }
         }
         div.append();
@@ -45,13 +45,13 @@
         while (counter < number) { var i = Math.floor(Math.random() * count); if (random.indexOf(i) == "-1") { if (counter == (number - 1)) { reAdsType(); } else { reAdsType(); } random.push(i); counter++; } }
       }).fail(function() {
         var div = $("#{{ region }}");
-        div.append('<div class="alert alert-success mb-0" role="alert"> <a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | replace_first: 'Н', 'н' }}</div>');
+        div.append('<div class="alert alert-success mb-0" role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</div>');
       });
     }
     $(document).ready(function() { {{ region | remove: "-" }}Random(); });
   {%- else -%}
     {%- if sr.url != site.url -%}
-      document.getElementById("{{ region }}").innerHTML = '<div  role="alert"> <a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про {{ sr.title | replace_first: 'Н', 'н' }}</div>';
+      document.getElementById("{{ region }}").innerHTML = '<div  role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про {{ sr.title | downcase }}</div>';
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
