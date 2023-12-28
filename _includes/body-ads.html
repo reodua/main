@@ -1,27 +1,27 @@
 {%- if page.layout == 'property' -%}
-{%- assign type = page.type | strip-%}
-{%- assign i_price = page.price_sqmt | default: page.price -%}
-{%- assign surface = page.surface -%}
-{%- assign surface_land = page.surface_land -%}
-{%- assign rooms = page.rooms -%}
-{%- assign floor = page.floor -%}
-{%- assign floors = page.floors -%}
-{%- assign i_region = page.region | strip -%}
-{%- assign i_location = page.location | strip -%}
-{%- assign address = page.address -%}
-{%- assign object = page.object | strip -%}
+  {%- assign type = page.type | strip -%}
+  {%- assign i_price = page.price_sqmt | default: page.price -%}
+  {%- assign surface = page.surface -%}
+  {%- assign surface_land = page.surface_land -%}
+  {%- assign rooms = page.rooms -%}
+  {%- assign floor = page.floor -%}
+  {%- assign floors = page.floors -%}
+  {%- assign i_region = page.region | strip -%}
+  {%- assign i_location = page.location | strip -%}
+  {%- assign address = page.address -%}
+  {%- assign object = page.object | strip -%}
 {%- else -%}
-{%- assign type = offer.type | strip -%}
-{%- assign i_price = offer.price_sqmt | default: offer.price -%}
-{%- assign surface = offer.surface -%}
-{%- assign surface_land = offer.surface_land -%}
-{%- assign rooms = offer.rooms -%}
-{%- assign floor = offer.floor -%}
-{%- assign floors = offer.floors -%}
-{%- assign i_region = offer.region | strip -%}
-{%- assign i_location = offer.location | strip -%}
-{%- assign address = offer.address -%}
-{%- assign object = offer.object | strip -%}
+  {%- assign type = offer.type | strip -%}
+  {%- assign i_price = offer.price_sqmt | default: offer.price -%}
+  {%- assign surface = offer.surface -%}
+  {%- assign surface_land = offer.surface_land -%}
+  {%- assign rooms = offer.rooms -%}
+  {%- assign floor = offer.floor -%}
+  {%- assign floors = offer.floors -%}
+  {%- assign i_region = offer.region | strip -%}
+  {%- assign i_location = offer.location | strip -%}
+  {%- assign address = offer.address -%}
+  {%- assign object = offer.object | strip -%}
 {%- endif -%}
 
 {% assign a_price = i_price | remove: '$' | remove: '€' %}
