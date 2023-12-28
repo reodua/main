@@ -38,8 +38,8 @@ layout: default
           <dd>{{ page.type }}</dd>
 
           {%- if page.rooms -%}
-            <dt>Кількість кімнат</dt>
-            <dd>У об'єкта {% include rooms.html rooms=page.rooms -%}</dd>
+            <dt>Кількість {% if page.type contains 'приміщення' or page.type contains 'Гараж' %}приміщень{%- else -%}кімнат{%- endif -%}</dt>
+            <dd>У об'єкта {% include rooms.html type=page.type rooms=page.rooms -%}</dd>
           {%- endif -%}
 
           {%- if page.surface -%}
@@ -86,7 +86,7 @@ layout: default
           <dt>{% if page.rent %}Орендодавець{% else %}Продавець{% endif %}</dt>
           <dd><a href="{{ site.url }}/region/{{ site.region_slug }}/?id={{ page.phone }}" title="{{ site.data.lang-uk.offers }}">{{ page.seller }}</a></dd>
 
-          <dt>Контакти {% if page.rent %}орендодавеця{% else %}продавця{% endif %}</dt>
+          <dt>Контакти {% if page.rent %}орендодавця{% else %}продавця{% endif %}</dt>
           <dd>{%- include footer/phone.html legal=page.phone type='property' -%}</dd>
 
           <dt>Виставлено на продаж у <a href="{{ site.main_url }}" target="_blank">Мережі Вебсайтів Нерухомості</a></dt>
@@ -132,11 +132,9 @@ layout: default
     {%- endif -%}
 
     {% comment %}
-    <h2>За цією адресою продається ще нерухомість</h2>
-
-    <h2>На цій вулиці продають іншу нерухомість</h2>
-
-    <h2>У цього продавця є інші оголошення</h2>
+      <h2>За цією адресою продається ще нерухомість</h2>
+      <h2>На цій вулиці продають іншу нерухомість</h2>
+      <h2>У цього продавця є інші оголошення</h2>
     {% endcomment %}
 
     {%- assign size = back | size | minus: 1 -%}
