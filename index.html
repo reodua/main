@@ -1,0 +1,8 @@
+---
+last_modified_at: 2023-12-27T18:06:54+02:00
+layout: default
+title: Нерухомість в місті Одеса і в Одеській області · Продаж і оренда
+---
+{%- if page.url contains "city" or page.url contains "town" -%}{%- assign isCityTown = true -%}{%- else -%}{%- assign isCityTown = false -%}{%- endif -%}
+{%- if page.url contains "village" -%}{%- assign isVillage = true -%}{%- else -%}{%- assign isVillage = false -%}{%- endif -%}
+{%- assign top = site.data.top -%}{%- if top.size > 0 -%}<div id="adsre" class="card-deck mx-n2 mb-3"></div>{%- endif -%}{% include home/deck.html %}

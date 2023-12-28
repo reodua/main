@@ -1,0 +1,101 @@
+{%- capture navitemtitle -%}
+  {%- if slug == 'commercial' -%}
+    {{ site.data.lang-uk.title_tab_commercial }}
+  {%- elsif slug == 'realtor' -%}
+    {{ site.data.lang-uk.title_tab_realtor }}
+  {%- else -%}
+    {%- if one.navtitle -%}
+      {{ one.navtitle }}
+    {%- elsif one.breadcrumb -%}
+      {{ one.breadcrumb }}
+    {%- else -%}
+      {{ one.title }}
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if url contains '/all.html' -%}
+  {%- if dir == current or one.url contains url and page.navhide != 1 -%}
+    {%- if one.url contains here and one.url contains 'all.html' and one.navhide != 1 -%}
+    {%- else -%}
+      <li class="nav-item">
+        {%- if one.url == url -%}
+        <span class="nav-link border-0 active">
+          <span>{{ navitemtitle }}</span>
+        </span>
+        {%- else -%}
+        <a href="{{ one.url }}" class="nav-link border-0">
+          <span>{{ navitemtitle }}</span>
+        </a>
+        {%- endif -%}
+      </li>
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+
+  {%- if one.url contains here and one.url contains '/all.html' and one.navhide != 1 -%}
+    {% comment %}
+      <li class="nav-item d-none">
+        {%- if one.url == url -%}
+        <span class="nav-link border-0 active">
+          <span>{{ navitemtitle }}</span>
+        </span>
+        {%- else -%}
+        <a href="{{ one.url }}" class="nav-link border-0">
+          <span>{{ navitemtitle }}</span>
+        </a>
+        {%- endif -%}
+      </li>
+    {% endcomment %}
+  {%- else -%}
+
+    {%- if url contains '/index.html' -%}
+
+      {%- if one.url contains here and one.url contains '/index.html' and one.navhide != 1 -%}
+      <li class="nav-item">
+        {%- if one.url == url -%}
+        <span class="nav-link border-0 active">
+          <span>{{ navitemtitle }}</span>
+        </span>
+        {%- else -%}
+        <a href="{{ one.url | remove: 'index.html' }}" class="nav-link border-0">
+          <span>{{ navitemtitle }}</span>
+        </a>
+        {%- endif -%}
+      </li>
+      {%- endif -%}
+
+    {%- else -%}
+
+      {%- if one.url contains here and one.url contains '/list.html' and one.navhide != 1 -%}
+      <li class="nav-item">
+        {%- if one.url == url -%}
+        <span class="nav-link border-0 active">
+          <span>{{ navitemtitle }}</span>
+        </span>
+        {%- else -%}
+        <a href="{{ one.url | remove: 'list.html' }}" class="nav-link border-0">
+          <span>{{ navitemtitle }}</span>
+        </a>
+        {%- endif -%}
+      </li>
+      {%- endif -%}    
+
+    {%- endif -%}
+
+    {%- if here == current and one.url contains here and one.navhide != 1 -%}
+    <li class="nav-item">
+      {%- if one.url == url -%}
+      <span class="nav-link border-0 active">
+        <span>{{ navitemtitle }}</span>
+      </span>
+      {%- else -%}
+      <a href="{{ one.url }}" class="nav-link border-0">
+        <span>{{ navitemtitle }}</span>
+      </a>
+      {%- endif -%}
+    </li>
+    {%- endif -%}
+
+  {%- endif -%}
+{%- endif -%}
