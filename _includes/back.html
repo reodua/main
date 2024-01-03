@@ -1,6 +1,6 @@
 {%- assign sizeu = slashu | size | minus: 1 -%}
 {%- assign backu = slashu | slice: 0, sizeu | join: '/' | append: '/' -%}
-{%- assign idata = site.pages | sort: 'dir' | where_exp: 'i', 'i.dir == backu' -%}
+{%- assign idata = site.pages | sort: 'dir' | where_exp: 'i', "i.dir == backu and i.url contains '/index.html'" -%}
 <hr>
 <div class="row">
   <div class="col-10 pt-2">
