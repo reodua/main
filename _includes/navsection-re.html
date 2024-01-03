@@ -1,30 +1,24 @@
-
-{%- assign url = include.url -%}
-{%- assign region = include.region -%}
+{%- assign iurl = include.url -%}
+{%- assign iregion = include.region -%}
 {%- assign ss = '' | split:'' -%}
-{%- assign ps = site.html_pages | sort: 'path' | reverse -%}
+{%- assign ps = site.pages | sort: 'dir' | reverse | where_exp: 'i', "i.dir != iurl and i.url contains iurl and i.navhide != 1"-%}
 {%- for i in ps -%}
-  {%- assign l = i.dir | split: '/' -%}
-  {%- if i.dir contains url and i.dir != url and i.title != '' and l.size == 4 or l.size == 5 -%}
+  {%- assign il = i.dir | split: '/' -%}
+  {%- if il.size == 4 or il.size == 5 -%}
     {%- assign ss = ss | push: i -%}
   {%- endif -%}
 {%- endfor -%}
-{%- if ss.size > 0 -%}
+{%- if ss[0] -%}
 <div class="menu pt-1">
   <nav class="navbar p-0">
-    <button title="{{ site.data.lang-uk.sections }}" class="navbar-toggler shadow-none collapsed" type="button" data-toggle="collapse" data-target="#{{ region }}-re-section" aria-controls="{{ region }}-re-section" aria-expanded="false" aria-label="Кнопка перемикання">
+    <button title="{{ site.data.uk.sections }}" class="navbar-toggler shadow-none collapsed" type="button" data-toggle="collapse" data-target="#{{ iregion }}-re-section" aria-controls="{{ iregion }}-re-section" aria-expanded="false" aria-label="Кнопка перемикання">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="section border-top-1 px-2 collapse navbar-collapse" id="{{ region }}-re-section">
+    <div class="section border-top-1 px-2 collapse navbar-collapse" id="{{ iregion }}-re-section">
       <ul class="navbar-nav">
         {%- for s in ss -%}
-          {%- assign slug = s.dir | split: '/' | last -%}
-          {%- assign current = s.dir | remove: slug | replace_first: '//', '/' -%}
-          {%- if url == current and s.navhide != 1 and s.title != '' and url contains '/index.html' -%}
-            {%- include home/navitem.html -%}
-          {%- else -%}
-            {%- include home/navitem.html -%}
-          {%- endif -%}
+          {%- assign sslug = s.dir | split: '/' | last -%}
+          {%- include home/navitem.html -%}
         {%- endfor -%}
       </ul>
     </div>

@@ -1,8 +1,8 @@
 <nav aria-label="Навігація по оголошенчях">
     <ul class="pagination float-right">
-    {%- for item in estates -%}
-        {%- assign index_prev = index | minus: 1 -%}
-        {%- assign index_next = index | plus: 1 -%}
+    {%- for item in backs -%}
+        {%- assign index_prev = iloop | minus: 1 -%}
+        {%- assign index_next = iloop | plus: 1 -%}
         {%- if forloop.index == index_prev -%}
           {%- assign prev = item -%}
           <li class="page-item">
@@ -12,7 +12,7 @@
             </a>
           </li>
         {%- endif %}
-        {%- if forloop.index == index_next and page.url != page.dir -%}
+        {%- if forloop.index == index_next and pageu != paged -%}
           {%- assign next = item -%}
           <li class="page-item">
             <a class="page-link page-next" href="{{ next.url }}" aria-label="Наступний оголошення" title="{{ next.title }}">

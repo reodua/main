@@ -1,36 +1,27 @@
 ---
 layout: compress
 ---
+{%- include vars/page-slash.html -%}
 {%- include start-ads.html -%}
 {%- include price.html -%}
 {%- include price-name.html -%}
-{%- capture fname -%}{%- include footer/contact.html legal="name" -%}{%- endcapture -%}
-{%- if page.url contains "city" or page.url contains "town" -%}{%- assign isCityTown = true -%}{%- else -%}{%- assign isCityTown = false -%}{%- endif -%}
-{%- if page.url contains "village" -%}{%- assign isVillage = true -%}{%- else -%}{%- assign isVillage = false -%}{%- endif -%}
-
+{%- include vars/fname-paged.html -%}
 <!doctype html>
 <html dir="ltr" lang="uk-UA" prefix="og: http://ogp.me/ns#">
   <head>
     {%- include head.html -%}
   </head>
   <body>
-
     <div id="top"></div>
-
     <div class="main">
-
       {%- include header.html -%}
-
-      <main{% if page.url == '/' %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
-
-        {% if page.url == "/" %}
-
+      <main{% if pageu == '/' %} class="content my-4"{% else %} class="content mb-4"{% endif %}>
+        {% if pageu == '/' %}
           <div class="container pb-1 lead-badge">
-            <h1 class="h4">Оголошення про продаж і оренду нерухомого майна в містах та районах <a href="/region/{{ site.region_slug }}/" title="Всі оголошення та об'єкти нерухомісті області">{{ site.data.lang-uk.deck_region_in }}</a></h1>
+            <h1 class="h4">Оголошення про продаж і оренду нерухомого майна в містах та районах <a href="/region/{{ site.region_slug }}/" title="Всі оголошення та об'єкти нерухомісті області">{{ site.data.uk.deck_region_in }}</a></h1>
             <a class="badge badge-primary" data-toggle="collapse" href="#collapseArea" role="button" aria-expanded="false" aria-controls="collapseArea" title="Місцевість де розташована нерухомість">Виберіть місцевість</a> <span class="badge badge-light text-wrap text-left px-0">де б ви хотіли <strong>знайти, купити чи продати нерухомість</strong> або</span>
             <a class="badge badge-primary text-wrap text-left" data-toggle="collapse" href="#collapseAds" role="button" aria-expanded="false" aria-controls="collapseAds" title="Послуги що можуть зацікавити">побудувати чи просто зробити ремонт і облаштувати свою оселю</a>
           </div>
-
           <div class="bg-light mb-3">
             <div class="container">
               <div class="collapse" id="collapseArea">
@@ -47,9 +38,7 @@ layout: compress
               </div>
             </div>
           </div>
-
         {%- endif -%}
-
         <div class="container">
           {%- include breadcrumb.html -%}
           {%- assign isContent = content | strip_newlines -%}
@@ -59,45 +48,29 @@ layout: compress
             {{ content }}
           {%- endif -%}
         </div>
-
       </main>
-
       {%- include footer.html -%}
-
     </div>
-
     {%- include scroll-top.html -%}
     {%- include java-script.html -%}
-
-    {%- if page.url contains 'realtor' and page.url contains 'region' and back.size == 4 and page.table != 1 or page.table != 2 -%}
+    {%- if pageu contains '/realtor/' and pageu contains '/region/' and back.size == 4 and page.table != 1 or page.table != 2 -%}
       {%- include pagination-js.html -%}
-    {%- elsif page.url contains 'realtor' and page.url contains 'district' and back.size == 5 and page.table != 1 or page.table != 2 -%}
-    {%- elsif page.url contains 'developer' and page.url contains 'region' and back.size == 4 and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/realtor/' and pageu contains '/district/' and back.size == 5 and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/developer/' and pageu contains '/region/' and back.size == 4 and page.table != 1 or page.table != 2 -%}
       {%- include pagination-js.html -%}
-    {%- elsif page.url contains 'developer' and page.url contains 'district' and back.size == 5 and page.table != 1 or page.table != 2 -%}
-    {%- elsif page.url contains 'agency' and page.url contains 'region' and back.size == 4 and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/developer/' and pageu contains '/district/' and back.size == 5 and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/agency/' and pageu contains '/region/' and back.size == 4 and page.table != 1 or page.table != 2 -%}
       {%- include pagination-js.html -%}
-    {%- elsif page.url contains 'agency' and page.url contains 'district' and back.size == 5 and page.table != 1 or page.table != 2 -%}
-    {%- elsif page.url contains 'building-materials' and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/agency/' and pageu contains '/district/' and back.size == 5 and page.table != 1 or page.table != 2 -%}
+    {%- elsif pageu contains '/building-materials.html' and page.table != 1 or page.table != 2 -%}
       {%- include pagination-js.html -%}
     {%- endif -%}
-
     {% include modals/net-realestate-modal.html %}
-
-    {%- assign slash = page.dir | split: '/' -%}
-
-    {%- if page.url contains 'map_.html' -%}
-    {%- elsif page.url contains 'map.html'-%}
-    {%- elsif slash.size >= 3 and page.dir != '/region/city/' and page.dir != '/district/town/'-%}
+    {%- if pageu contains '/map.html' -%}
+    {%- elsif slashd.size >= 3 and paged != '/region/city/' or paged != '/district/town/'-%}
+      {% include modals/re-map-modal.html %}
+    {%- elsif slashu.size == 5 or slashu.size == 6 and page.layout == 'property' -%}
       {% include modals/re-map-modal.html %}
     {%- endif -%}
-
-    {%- assign slash_url = page.url | split: '/' -%}
-    {%- if slash_url.size == 5 and page.layout == 'property' -%}
-      {% include modals/re-map-modal.html %}
-    {%- elsif slash_url.size == 6 and page.layout == 'property' -%}
-      {% include modals/re-map-modal.html %}
-    {%- endif -%}
-
   </body>
 </html>

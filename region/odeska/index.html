@@ -1,18 +1,14 @@
 ---
 last_modified_at: 2023-12-27T17:01:54+02:00
 title: Нерухомість у Одеській області
-navtitle:
-navhide:
-subtitle:
+navhide: 1
 breadcrumb: Одеська
 description: Купівля, продаж і оренда квартир, будинків, землі та комерційних нежитлових приміщень, новобудов у Одеській області
 table: 2
 ---
 <div class="row">
   <div class="col-12">
-
-    <h1 class="h2">Продаж і оренда нерухомості у Одеській області</h1>
-
+    <h1 class="h2">Продаж і оренда нерухомості в {{ page.title }}</h1>
     <div class="row justify-content-between">
       {%- assign mapPage = page.dir | append: 'map.html' | remove_first: '/' -%}
       {%- capture isMap -%}{%- file_exists {{ mapPage }} -%}{%- endcapture -%}
@@ -22,14 +18,14 @@ table: 2
           <li class="nav-item">
             <h5 class="m-lg-0">
               {%- if page.url contains mapPage -%}
-                <span class="badge badge-primary border-0" title="{{ site.data.lang-uk.re_map_on }}">
-                  <span>{{ site.data.lang-uk.re_map }}</span>
-                  <span class="d-lg-none">{{ site.data.lang-uk.nerukhomisti }}</span>
+                <span class="badge badge-primary border-0" title="{{ site.data.uk.re_map_on }}">
+                  <span>{{ site.data.uk.re_map }}</span>
+                  <span class="d-lg-none">{{ site.data.uk.nerukhomisti }}</span>
                 </span>
               {%- else -%}
-                <a class="badge badge-primary border-0" href="/{{ mapPage }}" title="{{ site.data.lang-uk.re_map_on }}">
-                  <span>{{ site.data.lang-uk.re_map }}</span>
-                  <span class="d-lg-none">{{ site.data.lang-uk.nerukhomisti }}</span>
+                <a class="badge badge-primary border-0" href="/{{ mapPage }}" title="{{ site.data.uk.re_map_on }}">
+                  <span>{{ site.data.uk.re_map }}</span>
+                  <span class="d-lg-none">{{ site.data.uk.nerukhomisti }}</span>
                 </a>
               {%- endif -%}
             </h5>
@@ -49,16 +45,11 @@ table: 2
         </select>
       </div>
     </div>
-
     <hr class="mb-2 mt-2 mt-md-0 mt-lg-0">
-
     {%- include thanks-please.html -%}
-
-    <h2 class="h3">Всі оголошення про продаж нерухомості у Одеській області</h2>
-
+    <h2 class="h3">Всі оголошення про продаж нерухомості в {{ page.title }}</h2>
     <div class="row">
       <div class="col-12">
-
         <table
           id="property"
           data-locale="{{ site.lang | replace: '_', '-' }}"
@@ -79,12 +70,11 @@ table: 2
           data-url="data/all.json">
           <thead class="thead-re">
             <tr>
-              <th data-field="type" data-title="{{ site.data.lang-uk.re_offer }}" data-formatter="propertyFormatter">Власність</th>
-              <th data-field="price" data-title="{{ site.data.lang-uk.re_cost | capitalize }}" data-formatter="priceFormatter" data-sortable="true" data-sorter="priceSorter">Ціна</th>
+              <th data-field="type" data-title="{{ site.data.uk.re_offer }}" data-formatter="propertyFormatter">Власність</th>
+              <th data-field="price" data-title="{{ site.data.uk.re_cost | capitalize }}" data-formatter="priceFormatter" data-sortable="true" data-sorter="priceSorter">Ціна</th>
             </tr>
           </thead>
         </table>
-
       </div>
     </div>
   </div>

@@ -1,24 +1,17 @@
 ---
 layout: default
 ---
+{%- include vars/page-slash.html -%}
 {%- include price.html -%}
 {%- include price-name.html -%}
-{%- assign back = page.url | split: '/' -%}
-{%- assign size = back | size | minus: 2 -%}
-{%- assign back_dir = back | slice: 0, size | join: '/' | append: '/' -%}
-{%- assign index = site.html_pages | sort: 'dir' | where_exp: 'i', 'i.url == back_dir' -%}
-{% assign addtitle = index[0].title | split: ' ' | slice: 1, 4 | join: ' ' %}
-{% assign region = back_dir | split: '/' | last %}
-{%- include price-name.html -%}
-
+{%- include back-title.html minus='2' so='1' st='4' data='title' du='url' -%}
+{%- assign region = backu | split: '/' | last -%}
 <div class="row">
   <div class="col-12">
-
     <div class="d-flex justify-content-end">
-      {%- include navsection-re.html region=region url=back_dir -%}
+      {%- include navsection-re.html region=region url=backu -%}
     </div>
-
-    <h1>{{ page.title }} {{ addtitle }}, {{ price_name }} <span class="badge badge-primary">{{ price }}&nbsp;₴</span></h1>
+    <h1>{{ paget }} {{ idata }}, {{ price_name }} <span class="badge badge-primary">{{ price }}&nbsp;₴</span></h1>
     <hr>
     {%- include seo-tags.html type=page.type rent=page.rent -%}
     <hr>
@@ -27,12 +20,9 @@ layout: default
     {%- assign files = site.static_files | where_exp: 'i', "i.path contains folder and i.extname == '.jpg' or i.extname == '.jpeg'" -%}
     {%- assign isImage = files | strip_newlines -%}
     {%- if isImage -%}{%- include grid/images.html files=files folder=folder -%}{%- endif -%}
-
     <h2 class="mt-2">Основні характеристики</h2>
-
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
       <div class="col">
-
         <dl class="properties">
           <dt>Тип нерухомості що {% if page.rent %}передається в оренду{% else %}продається{% endif %}</dt>
           <dd>{{ page.type }}</dd>
@@ -66,7 +56,7 @@ layout: default
           <dt>Адреса</dt>
           <dd{% if page.object %} class="mb-0"{% endif %}>
             {%- if page.coordinates -%}
-              <a class="marker" data-coord="{{ page.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" rel="nofollow" aria-haspopup="true" aria-expanded="false" aria-label="{%- if page.rent == 1 -%}{{ site.data.lang-uk.re_object_rent }}{%- else -%}{{ site.data.lang-uk.re_object_sell }}{%- endif -%} {{ site.data.lang-uk.re_on_map }}">
+              <a class="marker" data-coord="{{ page.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" rel="nofollow" aria-haspopup="true" aria-expanded="false" aria-label="{%- if page.rent == 1 -%}{{ site.data.uk.re_object_rent }}{%- else -%}{{ site.data.uk.re_object_sell }}{%- endif -%} {{ site.data.uk.re_on_map }}">
                 {{ page.address }}{% if page.location %}, {{ page.location }}{% endif %}{% if page.region %}, {{ page.region }}{% endif %}
               </a>
             {%- else -%}
@@ -77,14 +67,12 @@ layout: default
           {%- endif -%}
 
         </dl>
-
       </div>
       <div class="col">
-
         <dl class="properties">
 
           <dt>{% if page.rent %}Орендодавець{% else %}Продавець{% endif %}</dt>
-          <dd><a href="{{ site.url }}/region/{{ site.region_slug }}/?id={{ page.phone }}" title="{{ site.data.lang-uk.offers }}">{{ page.seller }}</a></dd>
+          <dd><a href="{{ site.url }}/region/{{ site.region_slug }}/?id={{ page.phone }}" title="{{ site.data.uk.offers }}">{{ page.seller }}</a></dd>
 
           <dt>Контакти {% if page.rent %}орендодавця{% else %}продавця{% endif %}</dt>
           <dd>{%- include footer/phone.html legal=page.phone type='property' -%}</dd>
@@ -115,10 +103,8 @@ layout: default
           {%- endif -%}
 
         </dl>
-
       </div>
     </div>
-
     {%- assign isContent = content | strip_newlines -%}
     {%- if isContent == '' -%}
       <hr>
@@ -130,28 +116,11 @@ layout: default
       {% if page.description != '' %}<p>{{ page.description }}.</p>{% endif %}
       {{ content }}
     {%- endif -%}
-
     {% comment %}
-    <h2>За цією адресою продається ще нерухомість</h2>
-    <h2>На цій вулиці продають іншу нерухомість</h2>
-    <h2>У цього продавця є інші оголошення</h2>
+      <h2>За цією адресою продається ще нерухомість</h2>
+      <h2>На цій вулиці продають іншу нерухомість</h2>
+      <h2>У цього продавця є інші оголошення</h2>
     {% endcomment %}
-
-    {%- assign size = back | size | minus: 1 -%}
-    {%- assign back_dir = back | slice: 0, size | join: '/' | append: '/' -%}
-    {%- assign index = site.pages | sort: 'dir' | where_exp: 'i', 'i.dir == back_dir' -%}
-    <hr>
-    <div class="row">
-      <div class="col-10 pt-2">
-        <span class="mr-1">&larr;</span><a href="{{ back_dir }}">{{ site.data.lang-uk.to_section }} {{ index[0].title | downcase }}</a>
-      </div>
-      <div class="col-2">
-        {%- assign estates = site.posts | where_exp: 'i', 'i.url contains back_dir' -%}
-        {%- assign index = 0 -%}
-        {%- for item in estates %}{%- if item.url == page.url %}{%- assign index = forloop.index -%}{%- endif %}{%- endfor -%}
-        {%- include pagination-re.html -%}
-      </div>
-    </div>
-
+    {%- include back.html -%}
   </div>
 </div>

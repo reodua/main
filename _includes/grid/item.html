@@ -25,25 +25,25 @@
 
 <article class="card h-100{% if slug == 'realtor' or slug == 'agency' or slug == 'developer' %} border-bottom-0{% endif %}" role="presentation">
   <div class="card-body pb-0">
-    <h3 class="sr-only m-0 p-0 h6"><data value="{{ offer.uid }}">{% if offer.rent == '1' %}{{ site.data.lang-uk.re_object_rent }}{% else %}{{ site.data.lang-uk.re_object_sell }}{% endif %} - {{ offerType }}, {{ site.data.lang-uk.re_cost }} {{ offer.price }}</data></h3>
+    <h3 class="sr-only m-0 p-0 h6"><data value="{{ offer.uid }}">{% if offer.rent == '1' %}{{ site.data.uk.re_object_rent }}{% else %}{{ site.data.uk.re_object_sell }}{% endif %} - {{ offerType }}, {{ site.data.uk.re_cost }} {{ offer.price }}</data></h3>
     <div class="mb-1">{% include card/body.html %}</div>
-    <div class="mb-1 small text-muted date">{%- if offer.rent == '1' -%}{{ site.data.lang-uk.re_dater }}{%- else -%}{{ site.data.lang-uk.re_date }}{%- endif -%}&nbsp;<time datetime="{%- if date > cdate -%}{{ cdate }}{%- else -%}{{ offer.date }}{%- endif -%}">{%- if date > cdate -%}{%- include date.html date=cdate -%}{%- else -%}{%- include date.html date=offer.date -%}{%- endif -%}</time></div>
+    <div class="mb-1 small text-muted date">{%- if offer.rent == '1' -%}{{ site.data.uk.re_dater }}{%- else -%}{{ site.data.uk.re_date }}{%- endif -%}&nbsp;<time datetime="{%- if date > cdate -%}{{ cdate }}{%- else -%}{{ offer.date }}{%- endif -%}">{%- if date > cdate -%}{%- include date.html date=cdate -%}{%- else -%}{%- include date.html date=offer.date -%}{%- endif -%}</time></div>
   </div>
   <div class="card-footer border-top-0 bg-white pt-0 pb-2 px-3 text-right">
     <div class="row row-cols-auto justify-content-end">
       <div class="col-auto pr-0">{%- include footer/phone.html legal=offer.phone type='dropdown' -%}</div>
       {%- if offer.coordinates and offer.coordinates != '' -%}
       <div class="col-auto pr-0">
-        <a class="marker" data-coord="{{ offer.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" aria-haspopup="true" aria-expanded="false" aria-label="{%- if offer.rent == 1 -%}{{ site.data.lang-uk.re_object_rent }}{%- else -%}{{ site.data.lang-uk.re_object_sell }}{%- endif -%} {{ site.data.lang-uk.re_on_map }}">
-          <span class="sr-only">{{ site.data.lang-uk.re_map }}:</span>
-          <span class="d-block h-100 w-100" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ offer.type }} {{ site.data.lang-uk.re_on_map }}"></span>
+        <a class="marker" data-coord="{{ offer.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" aria-haspopup="true" aria-expanded="false" aria-label="{%- if offer.rent == 1 -%}{{ site.data.uk.re_object_rent }}{%- else -%}{{ site.data.uk.re_object_sell }}{%- endif -%} {{ site.data.uk.re_on_map }}">
+          <span class="sr-only">{{ site.data.uk.re_map }}:</span>
+          <span class="d-block h-100 w-100" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ offer.type }} {{ site.data.uk.re_on_map }}"></span>
         </a>
       </div>
       {%- endif -%}
       <div class="col-auto">
         <a class="border-0" href="{{ offer.url }}">
-          <span class="sr-only">{{ site.data.lang-uk.re_description }}:</span>
-          <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ site.data.lang-uk.re_more }}">
+          <span class="sr-only">{{ site.data.uk.re_description }}:</span>
+          <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ site.data.uk.re_more }}">
             <img src="/assets/images/icons/three-dots.svg" alt="...">
           </span>
         </a>
