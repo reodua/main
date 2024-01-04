@@ -18,7 +18,13 @@
   <link rel="canonical" href="{{ pageu | absolute_url }}" />
   {%- capture folder -%}/assets/images/{{ page.phone }}/{{ page.uid }}/{%- endcapture -%}
   {%- assign files = site.static_files | where_exp: 'i', "i.path contains folder and i.extname == '.jpg' or i.extname == '.jpeg'" -%}
-  <link rel="image_src" href="{{ files[0].path | default: default_image | absolute_url }}" />
+  {%- capture imageid -%}/assets/images/re/{{ page.uid }}.jpg{%- endcapture -%}
+  {%- capture idimage -%}{%- file_exists {{ imageid }} -%}{%- endcapture -%}
+  {%- if files[0] -%}
+    <link rel="image_src" href="{{ files[0].path | default: default_image | absolute_url }}" />
+  {%- else -%}
+    <link rel="image_src" href="{{ imageid | default: default_image | absolute_url }}" />
+  {%- endif -%}
 {%- else -%}
   <title>{{ title }}</title>
   <link rel="shortlink" href="{{ site.url }}" />
