@@ -10,7 +10,7 @@
     </div>
   {%- if forloop.last -%}
   </div>
-  {%- endif -%}  
+  {%- endif -%}
 {%- else -%}
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -51,7 +51,9 @@
 {%- else -%}
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    {%- include none-advertisement.html title=page.title -%}
+    <div class="alert alert-success mb-0" role="alert">
+      {%- include none-advertisement.html title=page.title -%}
+    </div>
   </div>
 </div>
 {%- endfor -%}

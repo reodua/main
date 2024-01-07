@@ -70,7 +70,11 @@ layout: default
         {%- else -%}
           {%- assign name = paget | replace: 'Всі оголошення про ', '' -%}
           <div class="row">
-            <div class="col-md-6 offset-md-3">{%- include none-advertisement.html title=name -%}</div>
+            <div class="col-md-6 offset-md-3">
+              <div class="alert alert-success mb-0" role="alert">
+                {%- include none-advertisement.html title=name -%}
+              </div>
+            </div>
           </div>
         {%- endfor -%}
       {%- endif -%}
