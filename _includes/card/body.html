@@ -1,11 +1,12 @@
+{%- assign more = site.data.uk.re_more_ads | split: ',' | sample | append: site.data.uk.re_ads -%}
 {% capture linkPage %}, <a href="{{ site.url }}/{{ offer.phone }}" target="_blank" aria-label="{{ site.data.uk.re_page }}"><span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ site.data.uk.re_page }}">{{ site.data.uk.re_page_ads }}</span></a>{% endcapture %}
-{% capture linkPost %}, <a href="{{ offer.link }}" aria-label="{{ site.data.uk.re_page }}"><span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ site.data.uk.re_page }}">{{ site.data.uk.re_page_ads }}</span></a>{% endcapture %}
+{% capture linkPost %}, <a href="{{ offer.link }}" aria-label="{{ site.data.uk.re_page }}">{{ more }}</a>{% endcapture %}
 {%- include price-name.html -%}
 {%- include price.html -%}
 {%- include start-ads.html -%}
 {%- include body-ads.html -%}
 {%- if split.size <= 2 or split.size == 3 and page.dir contains '/city/' or page.dir contains '/town/' -%}
-    {%- if offer.page and offer.page == '1' -%}{{ linkPage }}{%- endif -%}
-    {%- if offer.link and offer.link != '' -%}{{ linkPost }}{%- endif -%}
-    ,&nbsp;{%- include footer/phone.html legal=offer.phone type='dropdown' -%}
+    {%- if offer.page and offer.page == '1' -%}{{ linkPage }}.
+    {%- elsif offer.link and offer.link != '' -%}{{ linkPost }}.
+    {%- else -%},&nbsp;{%- include footer/phone.html legal=offer.phone type='dropdown' -%}{%- endif -%}
 {%- endif -%}

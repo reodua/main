@@ -29,25 +29,14 @@
     <div class="mb-1">{% include card/body.html %}</div>
     <div class="mb-1 small text-muted date">{%- if offer.rent == '1' -%}{{ site.data.uk.re_dater }}{%- else -%}{{ site.data.uk.re_date }}{%- endif -%}&nbsp;<time datetime="{%- if date > cdate -%}{{ cdate }}{%- else -%}{{ offer.date }}{%- endif -%}">{%- if date > cdate -%}{%- include date.html date=cdate -%}{%- else -%}{%- include date.html date=offer.date -%}{%- endif -%}</time></div>
   </div>
+  {%- assign more = site.data.uk.re_more_ads | split: ',' | sample | append: site.data.uk.re_ads -%}
   <div class="card-footer border-top-0 bg-white pt-0 pb-2 px-3 text-right">
-    <div class="row row-cols-auto justify-content-end">
-      <div class="col-auto pr-0">{%- include footer/phone.html legal=offer.phone type='dropdown' -%}</div>
-      {%- if offer.coordinates and offer.coordinates != '' -%}
-      <div class="col-auto pr-0">
-        <a class="marker" data-coord="{{ offer.coordinates }}" data-toggle="modal" data-target="#mapa" href="#mapa" aria-haspopup="true" aria-expanded="false" aria-label="{%- if offer.rent == 1 -%}{{ site.data.uk.re_object_rent }}{%- else -%}{{ site.data.uk.re_object_sell }}{%- endif -%} {{ site.data.uk.re_on_map }}">
-          <span class="sr-only">{{ site.data.uk.re_map }}:</span>
-          <span class="d-block h-100 w-100" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ offer.type }} {{ site.data.uk.re_on_map }}"></span>
-        </a>
-      </div>
-      {%- endif -%}
-      <div class="col-auto">
-        <a class="border-0" href="{{ offer.url }}">
-          <span class="sr-only">{{ site.data.uk.re_description }}:</span>
-          <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ site.data.uk.re_more }}">
-            <img src="/assets/images/icons/three-dots.svg" alt="...">
-          </span>
-        </a>
-      </div>
-    </div>
+    {%- if offer.url and offer.url != '' -%}
+      <a href="{{ offer.url }}" aria-label="{{ site.data.uk.re_page }}">{{ more | capitalize }}</a>
+    {%- else -%}
+      <a href="{{ site.url }}/{{ offer.phone }}" aria-label="{{ site.data.uk.re_page }}">
+        <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ site.data.uk.re_page }}">{{ site.data.uk.re_page_ads | capitalize }}</span>
+      </a>
+    {%- endif -%}
   </div>
 </article>

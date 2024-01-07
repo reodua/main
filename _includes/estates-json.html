@@ -33,7 +33,7 @@
             "seller":"{{ offer.seller }}",
             "phone":"{{ offer.phone }}",
             "description":"{{ offer.description }}",
-            "link":"{{ offer.url }}",
+            "link":"{%- if offer.page == 1 -%}{%- else -%}{{ offer.url }}{%- endif -%}",
             {%- if isImage != '' -%}"images":{%- capture img -%}[{%- for file in site.static_files -%}{%- if file.path contains folder and file.extname == '.jpg' or file.extname == '.JPG' or file.extname == '.jpeg' or file.extname == '.JPEG' or file.extname == '.png' or file.extname == '.PNG' -%}{"src":"{{ file.name }}","alt":"{{ offer.type }} {{ site.data.uk.re_in }} {{ offer.location }}{{ district }}","title":"{{ offer.type }} {% if offer.address contains site.data.uk.re_vul %}{{ site.data.uk.re_po }} {{ offer.address }}{% else %}{{ site.data.uk.re_at }} {{ offer.address }}{% endif %} {{ site.data.uk.re_in }} {{ offer.location }}{{ district }}"},{%- endif -%}{%- endfor -%}]{%- endcapture -%}{{ img | replace: ',]', ']' }}{%- else -%}"images":""{%- endif -%}
         }
         {%- unless forloop.last -%},{%- endunless -%}

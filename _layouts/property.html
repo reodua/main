@@ -18,14 +18,21 @@ layout: default
     {% include thanks-please.html %}
     {%- capture folder -%}/assets/images/{{ page.phone }}/{{ page.uid }}/{%- endcapture -%}
     {%- assign files = site.static_files | where_exp: 'i', "i.path contains folder and i.extname == '.jpg' or i.extname == '.jpeg'" -%}
-    {%- assign isImage = files | strip_newlines -%}
-    {%- if isImage -%}{%- include grid/images.html files=files folder=folder -%}{%- endif -%}
+    {%- if files[0] -%}{%- include grid/images.html files=files folder=folder -%}{%- endif -%}
     <h2 class="mt-2">Основні характеристики</h2>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
       <div class="col">
         <dl class="properties">
           <dt>Тип нерухомості що {% if page.rent %}передається в оренду{% else %}продається{% endif %}</dt>
-          <dd>{{ page.type }}</dd>
+          {%- capture imageid -%}/assets/images/re/{{ page.uid }}.jpg{%- endcapture -%}
+          {%- capture idimage -%}{%- file_exists {{ imageid }} -%}{%- endcapture -%}
+          <dd>
+            {%- if idimage == 'true' -%}
+              <a href="{{ imageid | url_decode | relative_url }}" class="lightbox" title="{{ page.type }} {% if page.address contains site.data.uk.re_vul %}{{ site.data.uk.re_po }} {{ page.address }}{% else %}{{ site.data.uk.re_at }} {{ page.address }}{% endif %} {{ site.data.uk.re_in }} {{ page.location }}{{ district }}" data-lightbox-caption="{{ site.data.uk.re_free_ads_in }} {{ page.location }}{{ district }}" data-lightbox-width="800" data-lightbox-height="600" data-lightbox-group="{{ page.uid }}">{{ page.type }}</a>
+            {%- else -%}
+              {{ page.type }}
+            {%- endif -%}
+          </dd>
 
           {%- if page.rooms -%}
             <dt>Кількість {% if page.type contains 'приміщення' or page.type contains 'Гараж' %}приміщень{%- else -%}кімнат{%- endif -%}</dt>
