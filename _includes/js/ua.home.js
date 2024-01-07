@@ -37,7 +37,7 @@
               div.append('<div class="card my-2"><div class="card-body p-2"><strong>{{ site.data.uk.re_sell }} <span class="text-lowercase">' + data[i].type + '</span></strong> {{ site.data.uk.re_surface_total }} ' + data[i].surface + '&nbsp;{{ site.data.uk.m }}, {{ site.data.uk.re_rooms }} ' + data[i].rooms + ', {{ site.data.uk.re_floorss }} ' + data[i].floor + ' {{ site.data.uk.re_address }} ' + data[i].address + '' + reAdsLocation() + '' + reAdsRegion() + ', ' + reAdsPrice() + ', ' + reAdsTel() + '</div></div>');
             }
           } else {
-            div.append('<li class="alert alert-success mb-0" role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</li>');
+            div.append('<li class="alert alert-success mb-0"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</li>');
           }
         }
         div.append();
@@ -45,13 +45,13 @@
         while (counter < number) { var i = Math.floor(Math.random() * count); if (random.indexOf(i) == "-1") { if (counter == (number - 1)) { reAdsType(); } else { reAdsType(); } random.push(i); counter++; } }
       }).fail(function() {
         var div = $("#{{ region }}");
-        div.append('<li class="alert alert-success mb-0" role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</li>');
+        div.append('<li class="alert alert-success mb-0"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про нерухомість {{ sr.title | downcase }}</li>');
       });
     }
     $(document).ready(function() { {{ region | remove: "-" }}Random(); });
   {%- else -%}
     {%- if sr.url != site.url -%}
-      document.getElementById("{{ region }}").innerHTML = '<li class="alert alert-success mb-0" role="alert"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про {{ sr.title | downcase }}</li>';
+      document.getElementById("{{ region }}").innerHTML = '<li class="alert alert-success mb-0"><a href="{{ sr.url }}" class="alert-link">Додати&nbsp;оголошення</a> про {{ sr.title | downcase }}</li>';
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
