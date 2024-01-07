@@ -32,7 +32,7 @@
   {%- assign more = site.data.uk.re_more_ads | split: ',' | sample | append: site.data.uk.re_ads -%}
   <div class="card-footer border-top-0 bg-white pt-0 pb-2 px-3 text-right">
     {%- if offer.url and offer.url != '' -%}
-      <a href="{{ offer.url }}" aria-label="{{ site.data.uk.re_page }}">{{ more | capitalize }}</a>
+      <a href="{{ offer.url }}" aria-label="{{ more | capitalize }}">{{ more | capitalize }}</a>
     {%- else -%}
       <a href="{{ site.url }}/{{ offer.phone }}" aria-label="{{ site.data.uk.re_page }}">
         <span aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ site.data.uk.re_page }}">{{ site.data.uk.re_page_ads | capitalize }}</span>
