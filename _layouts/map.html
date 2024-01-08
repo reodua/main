@@ -48,8 +48,10 @@ layout: compress
     {%- if pageu contains '/map.html' -%}
       {%- if slashu.size == 4 -%}
         {%- assign data = pageu | split: '/' | slice: 2, 4 | join: '/' | prepend: 'data/' -%}
-      {%- elsif slashu.size == 5 -%}
+      {%- elsif slashu.size == 5 and isCityTown == true -%}
         {%- assign data = pageu | split: '/' | slice: 3, 5 | join: '/' | prepend: 'data/' -%}
+      {%- elsif slashu.size == 5 and pageu contains '/district/' and isCityTown == false -%}
+        {%- assign data = pageu | split: '/' | slice: 2, 5 | join: '/' | prepend: 'data/' -%}
       {%- elsif slashu.size == 6 -%}
         {%- assign data = pageu | split: '/' | slice: 3, 6 | join: '/' | prepend: 'data/' -%}
       {%- endif -%}
