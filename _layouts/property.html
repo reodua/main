@@ -95,7 +95,7 @@ layout: default
 
           {%- if page.price or page.price_sqmt -%}
             <dt>Вартість {% if page.rent %}оренди{% else %}продажу{% endif %} нерухомості{% if page.rent and page.price %} за місяць{% elsif page.rent and page.price_sqmt %} за добу (24 години){% endif %}</dt>
-            <dd class="mb-0">{% if page.last_modified_at %}Станом на {% include date.html date=page.last_modified_at %}, ціна {% endif %}{{ price }} гривень</dd>
+            <dd class="mb-0">{% if page.last_modified_at %}Станом на {% include date.html date=page.last_modified_at %}, ціна {% endif %}{{ price }} гривень за все</dd>
             {% if in_price contains '$' or in_price contains '€' %}
               <dd class="mb-0">Ціна в іноземній валюті {{ symbol }}
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
@@ -109,10 +109,10 @@ layout: default
               <dd class="mb-0">Ціна в іноземній валюті $
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
-                {% comment %}
-                  {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
-                  ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
-                {% endcomment %}
+              </dd>
+              <dd class="mb-0">Ціна в іноземній валюті $
+                {%- assign price = price | remove: '&nbsp;' | divided_by: surface | ceil -%}
+                {%- include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²
               </dd>
             {% endif %}
             <dd>Конвертовано за курсом {% if in_price contains '$' %}{{ rate }}{% elsif in_price contains '€' %}{{ rate }}{% else %}{{ rate }}{% endif %} гривень за {% if in_price contains '$' %}{{ symbol }}1{% elsif in_price contains '€' %}{{ symbol }}1{% else %}$1{% endif %}</dd>
