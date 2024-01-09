@@ -101,15 +101,19 @@ layout: default
               <dd class="mb-0">Ціна в іноземній валюті {{ symbol }}
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
-                {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
-                ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
+                {% comment %}
+                  {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
+                  ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
+                {% endcomment %}
               </dd>
             {% else %}
               <dd class="mb-0">Ціна в іноземній валюті $
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
-                {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
-                ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
+                {% comment %}
+                  {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
+                  ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
+                {% endcomment %}
               </dd>
             {% endif %}
             <dd>Конвертовано за курсом {% if in_price contains '$' %}{{ rate }}{% elsif in_price contains '€' %}{{ rate }}{% else %}{{ rate }}{% endif %} гривень за {% if in_price contains '$' %}{{ symbol }}1{% elsif in_price contains '€' %}{{ symbol }}1{% else %}$1{% endif %}</dd>
