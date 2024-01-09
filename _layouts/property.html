@@ -102,8 +102,8 @@ layout: default
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
               </dd>
-              <dd class="mb-0">Ціна в іноземній валюті {{ symbol }} // #surface = -{{ surface }}-
-                {%- assign price = price | remove: '&nbsp;' | remove: symbol | divided_by: rate | divided_by: surface | ceil -%}
+              <dd class="mb-0">Ціна в іноземній валюті {{ symbol }} // #surface = -{{ surface }}- #befor price = -{{ price }}
+                {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
                 ### #price = -{{ price }}- ###
                 &nbsp;{% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²
               </dd>
