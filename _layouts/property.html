@@ -40,13 +40,15 @@ layout: default
           {%- endif -%}
 
           {%- if page.surface -%}
+            {%- assign surface = page.surface | default: page.surface_land-%}
             <dt>Загальна площа об'єкта нерухомості</dt>
-            <dd>{{ page.surface }} метрів квадратних (м²)</dd>
+            <dd>{{ surface }} метрів квадратних (м²)</dd>
           {%- endif -%}
 
           {%- if page.surface_land -%}
+            {%- assign surface = page.surface | default: page.surface_land-%}
             <dt>Загальна площа земельної ділянки</dt>
-            <dd>{{ page.surface_land }} метрів квадратних (м²) ({{ page.surface_land | divided_by: 10000.0000 | round: 4 }} га)</dd>
+            <dd>{{ surface }} метрів квадратних (м²) ({{ surface | divided_by: 10000.0000 | round: 4 }} га)</dd>
           {%- endif -%}
 
           {%- if page.floor -%}
@@ -99,7 +101,6 @@ layout: default
               <dd class="mb-0">Ціна в іноземній валюті {{ symbol }}
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
-                {%- assign surface = page.surface | default: page.surface_land-%}
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
                 ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
               </dd>
@@ -107,7 +108,6 @@ layout: default
               <dd class="mb-0">Ціна в іноземній валюті $
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
-                {%- assign surface = page.surface | default: page.surface_land-%}
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
                 ({% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²)
               </dd>
