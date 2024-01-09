@@ -102,11 +102,13 @@ layout: default
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
               </dd>
-              <dd class="mb-0">Ціна в іноземній валюті {{ symbol }} // #surface = -{{ surface }}- #befor price = -{{ price }}
-                {%- assign price = price | remove: '&nbsp;' | divided_by: rate | divided_by: surface | ceil -%}
-                ### #price = -{{ price }}- ###
-                &nbsp;{% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²
-              </dd>
+
+                <dd class="mb-0">Ціна в іноземній валюті {{ symbol }} // #surface = -{{ surface }}- #befor price = -{{ price }}-
+                  {%- assign price = price | remove: '&nbsp;' | divided_by: surface | ceil -%}
+                  ### #price = -{{ price }}- ###
+                  &nbsp;{% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²
+                </dd>
+
             {% else %}
               <dd class="mb-0">Ціна в іноземній валюті $
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
