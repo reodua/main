@@ -40,13 +40,13 @@ layout: default
           {%- endif -%}
 
           {%- if page.surface -%}
-            {%- assign surface = page.surface | default: page.surface_land-%}
+            {%- assign surface = page.surface | default: page.surface_land -%}
             <dt>Загальна площа об'єкта нерухомості</dt>
             <dd>{{ surface }} метрів квадратних (м²)</dd>
           {%- endif -%}
 
           {%- if page.surface_land -%}
-            {%- assign surface = page.surface | default: page.surface_land-%}
+            {%- assign surface = page.surface | default: page.surface_land -%}
             <dt>Загальна площа земельної ділянки</dt>
             <dd>{{ surface }} метрів квадратних (м²) ({{ surface | divided_by: 10000.0000 | round: 4 }} га)</dd>
           {%- endif -%}
@@ -102,8 +102,9 @@ layout: default
                 {%- assign price = price | remove: '&nbsp;' | divided_by: rate | ceil -%}
                 {%- include numf.html number=price ts='&nbsp;' decimals=0 -%}
               </dd>
-              <dd class="mb-0">Ціна в іноземній валюті {{ symbol }}
+              <dd class="mb-0">Ціна в іноземній валюті {{ symbol }} // #surface = -{{ surface }}-
                 {%- assign price = price | remove: '&nbsp;' | remove: symbol | divided_by: rate | divided_by: surface | ceil -%}
+                ### #price = -{{ price }}- ###
                 &nbsp;{% include numf.html number=price ts='&nbsp;' decimals=0 %} за 1 м²
               </dd>
             {% else %}
