@@ -19,10 +19,10 @@
           <a href="/ukraine" class="text-decoration-none border-0" aria-label="{{ site.data.uk.ua }}">
             {%- include icons/trezub.svg width="27" height="45" class="flex-shrink-0 mr-3" -%}
           </a>
-          <div>
-            <p class="h5 my-0">{{ fname }}</p>
-            <address>{%- include footer/contact.html legal="address" -%}</address>
-          </div>
+          <address>
+            <strong class="h5">{{ fname }}</strong><br>
+            {%- include footer/contact.html legal="address" -%}
+          </address>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
@@ -44,21 +44,15 @@
       <div class="col-lg-5 order-2 order-lg-1">
         <div class="d-flex position-relative">
           {%- include icons/beta.svg width="50" height="25" class="flex-shrink-0 mt-1 mr-3" -%}
-          <div>
-            <p>{{ site.data.uk.footer_text_trial }} <a href="mailto:{{ site.author.email }}" rel="nofollow">{{ site.author.email }}</a></p>
-          </div>
+          <p>{{ site.data.uk.footer_text_trial }} <a href="mailto:{{ site.author.email }}" rel="nofollow">{{ site.author.email }}</a></p>
         </div>
         <div class="d-flex position-relative">
           {%- include icons/cc.svg width="50" height="50" class="flex-shrink-0 mt-1 mr-3" -%}
-          <div>
-            <p>{{ site.data.uk.footer_text_cc_1 }} <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.uk" class="font-weight-bold" rel="nofollow">{{ site.data.uk.footer_text_cc_2 }}</a>, {{ site.data.uk.footer_text_cc_3 }}</p>
-          </div>
+          <p>{{ site.data.uk.footer_text_cc_1 }} <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.uk" class="font-weight-bold" rel="nofollow">{{ site.data.uk.footer_text_cc_2 }}</a>, {{ site.data.uk.footer_text_cc_3 }}</p>
         </div>
         <div class="d-flex position-relative">
           {%- include icons/dev.svg width="50" height="50" class="flex-shrink-0 mt-1 mr-3 text-white" -%}
-          <div>
-            <p><a href="{{ site.developer.website }}" target="_blank" rel="nofollow">{{ site.developer.name }}</a> {{ site.data.uk.footer_developer }}</p>
-          </div>
+          <p><a href="{{ site.developer.website }}" target="_blank" rel="nofollow">{{ site.developer.name }}</a> {{ site.data.uk.footer_developer }}</p>
         </div>
       </div>
       <div class="col-lg-7 order-1 order-lg-2">

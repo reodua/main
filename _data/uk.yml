@@ -3,7 +3,8 @@ main_city: odesa
 main_region: odeska
 
 flag_ua_city: Одеса
-deck_region_in: Одеської області
+deck_region_in: Одеської
+deck_region_at: Одеській
 deck_region: Одеська
 
 local_communities: >

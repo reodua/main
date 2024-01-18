@@ -43,7 +43,7 @@
             {%- else -%}
               {%- if one.navtitle -%}{{ one.navtitle }}{%- else -%}{{ one.title }}{%- endif -%}
             {%- endif -%}
-            {% if one.url contains "/district/" %} {{ site.data.uk.deck_region_in }}{% endif %}
+            {% if one.url contains "/district/" %} {{ site.data.uk.deck_region_in }} області{% endif %}
           </h1>
         </div>
         <div class="col-12">{%- include home/region.html current=one.url -%}</div>
@@ -60,7 +60,7 @@
                 <a href="{{ two.url }}">
                   {%- if two.navtitle -%}{{ two.navtitle }}{%- else -%}{{ two.title }}{%- endif -%}
                 </a>
-                {% if two.url contains "/region/city/" or two.url contains "/district/town/" %} {{ site.data.uk.deck_region_in }}{% endif %}
+                {% if two.url contains "/region/city/" or two.url contains "/district/town/" %} {{ site.data.uk.deck_region_in }} області{% endif %}
               </h2>
             </div>
             <div class="col-12">{%- include home/region.html current=two.url -%}</div>
