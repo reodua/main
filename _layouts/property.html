@@ -6,9 +6,15 @@ layout: default
 {%- include price-name.html -%}
 {%- include back-title.html minus='2' so='1' st='4' data='title' du='url' -%}
 {%- assign region = backu | split: '/' | last -%}
-{%- capture ttext -%}{% include start-ads.html %}{% include price-name.html %}{% include price.html %}{% include body-ads.html %}:{%- endcapture -%}
-{%- assign twtext = ttext | remove: '&nbsp;' | replace: '  ',' ' | strip_html | strip | strip_newlines | replace: '. ','.' | replace: ', ',',' -%}
+{%- capture text -%}
+  {%- include start-ads.html -%}
+  {%- include price-name.html -%}
+  {%- include price.html -%}
+  {%- include body-ads.html -%}
+{%- endcapture -%}
+{%- assign text = text | remove: '&nbsp;' | strip_html | strip_newlines | replace: '. ','.' | replace: ', ',',' | url_encode -%}
 {%- assign hashtags = 'нерухомість,продаж' | url_encode -%}
+{%- assign purl = pageu | absolute_url | url_encode -%}
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-end">

@@ -32,31 +32,21 @@
     {%- assign isHouse = false -%}
 {%- endif -%}
 
-<strong>{{ start_ads }}</strong>
+<strong>{{- start_ads -}}</strong>
 
 {% if type contains site.data.uk.re_land %}
-    {{ site.data.uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.uk.re_total }}"><b>{{ surface_land }}</b></abbr>&nbsp;м² ({{ surface_land | divided_by: 10000.0000 | round: 4 }} га),
-{% else %}
+    {{- site.data.uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.uk.re_total }}"><b>{{ surface_land }}</b></abbr>&nbsp;м² ({{ surface_land | divided_by: 10000.0000 | round: 4 }} га),
+{%- else -%}
 
-    {% if surface %}
-        {{ site.data.uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.uk.re_total }}"><b>{{ surface }}</b></abbr> м²,
-    {% endif %}
+    {%- if surface %} {{ site.data.uk.re_surface }} <abbr data-toggle="tooltip" title="{{ site.data.uk.re_total }}"><b>{{ surface }}</b></abbr> м², {% endif %}
 
-    {% if rooms %}
-        {% include rooms.html rooms=rooms type=type %},
-    {% endif %}
+    {%- if rooms -%}{%- include rooms.html rooms=rooms type=type %}, {% endif %}
 
-    {% if floor and isHouse == false %}
-        {{ site.data.uk.re_na }} {{ floor }}{{ site.data.uk.re_mu }} {{ site.data.uk.re_floorci }},
-    {% endif %}
+    {%- if floor and isHouse == false -%}{{ site.data.uk.re_na }} {{ floor }}{{ site.data.uk.re_mu }} {{ site.data.uk.re_floorci }}, {% endif %}
 
-    {% if type contains 'приміщення' or type == 'Гараж' %}
-        у споруди
-    {% else %}
-        у будинку
-    {% endif %}
+    {%- if type contains 'приміщення' or type == 'Гараж' -%}у споруди {%- else -%}у будинку {% endif %}
 
-    {% include floors.html floors=floors %},
+    {%- include floors.html floors=floors %},
 {% endif %}
 
 {% if i_location != '' %}

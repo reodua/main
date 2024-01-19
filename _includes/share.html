@@ -6,10 +6,10 @@
       <div class="section border-top-1 px-2 collapse navbar-collapse" id="share">
         <ul class="navbar-nav">
           <li class="nav-item m-0">
-            <a class="nav-link border-0 px-2 py-1" href="javascript:void(0);" onclick="SocShare.show('https://twitter.com/share?url={{ pageu | absolute_url | url_encode }}&amp;text={{ twtext }}&hashtags={{ hashtags }}',550,420);" aria-label="Читати у Twitter" title="Поділитися у мережі Twitter (X)">Twitter&nbsp;(X)</a>
+            <a class="nav-link border-0 px-2 py-1" href="javascript:void(0);" onclick="sShare.show('https://twitter.com/share?url={{ purl }}&amp;text={{ text }}&hashtags={{ hashtags }}',550,420);" aria-label="Читати у Twitter" title="Поділитися у мережі Twitter (X)">Twitter&nbsp;(X)</a>
           </li>
           <li class="nav-item m-0">
-            <a class="nav-link border-0 px-2 pt-1 pb-2" href="javascript:void(0);" onclick="SocShare.show('https://www.facebook.com/sharer.php?u={{ pageu | absolute_url | url_encode }}',550,420);" aria-label="Читати у Facebook" title="Поділитися у мережі Facebook">Facebook</a>
+            <a class="nav-link border-0 px-2 pt-1 pb-2" href="javascript:void(0);" onclick="sShare.show('https://www.facebook.com/sharer.php?u={{ purl }}&title={{ text }}',550,420);" aria-label="Читати у Facebook" title="Поділитися у мережі Facebook">Facebook</a>
           </li>
         </ul>
       </div>
