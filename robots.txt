@@ -1,12 +1,13 @@
-Host: https://www.realestate.od.ua
-Sitemap: https://www.realestate.od.ua/sitemap.xml
 User-agent: *
+Allow: /
 Disallow: */data/
 Disallow: /*/data/*
 Disallow: /*/data/
 Disallow: /*/data/*.json
 Disallow: *.json
+Disallow: /assets/css/*.css
+Disallow: /assets/js/*.js
 Disallow: /404.html
 Disallow: /add.html
 Disallow: /new.html
-Allow: /
+Sitemap: https://www.realestate.od.ua/sitemap.xml
