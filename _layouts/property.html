@@ -13,7 +13,11 @@ layout: default
   {%- include body-ads.html -%}
 {%- endcapture -%}
 {%- assign text = text | remove: '&nbsp;' | strip_html | strip_newlines | replace: '. ','.' | replace: ', ',',' | url_encode -%}
-{%- assign hashtags = 'нерухомість,продаж' | url_encode -%}
+{%- if page.rent -%}
+  {%- assign hashtags = 'нерухомість,оренда' | url_encode -%}
+{%- else -%}
+  {%- assign hashtags = 'нерухомість,продаж' | url_encode -%}
+{%- endif -%}
 {%- assign purl = pageu | absolute_url | url_encode -%}
 <div class="row">
   <div class="col-12">
