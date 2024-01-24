@@ -129,7 +129,7 @@
   {%- for offer in rents -%}
     {%- include property/price.html -%}
     {%- assign price = price | remove: '&nbsp;' | divided_by: offer.surface -%}
-    {%- assign sum = sum | plus: price -%
+    {%- assign sum = sum | plus: price -%}
   {%- endfor -%}
   {%- if total_records > 0 -%}
     {%- assign average_price = sum | divided_by: total_records -%}
