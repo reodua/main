@@ -37,30 +37,39 @@
 #
 - type: developer
   item: builder
-  name: Будівельна компанія "Будівельник"
+  name: Будівельна компанія "Україна"
+  address: 65000, м. Одеса, вул.&nbsp;Степана&nbsp;Бандери,&nbsp0
+  phone_main: 380000000001
+  phone_hot: 380000000002
+  phone_fax: 380000000003
+  phone_buy: 380000000004
+  email: builder@realestate.od.ua
+  www: https://www.realestate.od.ua/
 
 #
 # Realtor / Agent
 #
-- type: realtor
-  item: bandera
-  name: Нерухомість в Одесі - Степан Бандера
-  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
-  # phone_main: 380672349221
-  # phone_hot: 380672349221
-  # phone_fax: 380672349221
-  # email: info@realestate.od.ua
-  # www: https://www.realestate.if.ua/
+# - type: realtor
+#   item: bandera
+#   name: Нерухомість в Одесі - Степан Бандера
+#   address: 65000, м. Одеса, вул.&nbsp;Степана&nbsp;Бандери,&nbsp0
+#   phone_main: 380000000001
+#   phone_hot: 380000000002
+#   phone_fax: 380000000003
+#   phone_buy: 380000000004
+#   email: realtor@realestate.od.ua
+#   www: https://www.realestate.od.ua/
 
 - type: realtor
   item: agent
   name: Нерухомість від Агента Продавця
-  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
-  # phone_main: 380504949649
-  # phone_hot: 380504949649
-  # phone_fax: 380504949649
-  # email: agent@realestate.in.ua
-  # www: https://www.realestate.in.ua/
+  address: 65000, м. Одеса, вул.&nbsp;Степана&nbsp;Бандери,&nbsp0
+  phone_main: 380000000001
+  phone_hot: 380000000002
+  phone_fax: 380000000003
+  phone_buy: 380000000004
+  email: agent@realestate.od.ua
+  www: https://www.realestate.od.ua/
 
 #
 # Agency / ahentsiya
@@ -68,9 +77,10 @@
 - type: agency
   item: ahentsiya
   name: Нерухомість від Агенції Продавця
-  # address: 76018, м. Івано-Франківськ, вул.&nbsp;Січових&nbsp;Стрільців,&nbsp;56
-  # phone_main: 380504949649
-  # phone_hot: 380504949649
-  # phone_fax: 380504949649
-  # email: agency@realestate.in.ua
-  # www: https://www.realestate.in.ua/
+  address: 65000, м. Одеса, вул.&nbsp;Степана&nbsp;Бандери,&nbsp0
+  phone_main: 380000000001
+  phone_hot: 380000000002
+  phone_fax: 380000000003
+  phone_buy: 380000000004
+  email: agency@realestate.od.ua
+  www: https://www.realestate.od.ua/
